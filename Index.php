@@ -17,10 +17,10 @@
 			</div>
 			<div class="input-container">
 				<i class="fa fa-key icon"></i>
-				<input class="input-field" type="text" name="InputPassword" placeholder="Contraseña">
+				<input class="input-field" type="password" name="InputPassword" placeholder="Contraseña">
 			</div>
 			<button type="submit" id="Entrar">Entrar</button>
-			<p>No tienes cuenta? <a id="RegistroLabel" href="Register.php">Regístrate</a></p>
+			<p align="center">No tienes cuenta? <a id="RegistroLabel" href="Register.php">Regístrate</a></p>
 		</div>
 	</form>
 </body>
