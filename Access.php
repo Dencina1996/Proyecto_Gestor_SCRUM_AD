@@ -10,12 +10,10 @@
 	$Query -> bindValue(':InputPassword',$Contrasenya);
 	$Query -> execute();
 	$Result = $Query->rowCount();
-	
+
 	if($Result == 1){
 		echo "<label style='background-color: green; color: white;'>Connectat!</label>";
 	} else {
 		echo "<label style='background-color: red; color: white;'>Incorrecte!</label>";
 	}
 ?>
-
-
