@@ -11,7 +11,7 @@ function validarLogin() {
 	}
 
 	if (Password.length <= 0) {
-		setTimeout(createError("Campo de Contraseña vacío");
+		createError("Campo de Contraseña vacío");
 		Counter--;
 	} else {
 		Counter++;
