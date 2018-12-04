@@ -5,22 +5,22 @@
 	<title>Bienvenid@ - Scrum AD</title>
 	<link rel="stylesheet" type="text/css" href="CSS/Index_CSS/Styles.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<script type="text/javascript" src="JS/Scripts.js"></script>
 </head>
 <body>
-	<form action="Access.php" method="POST">
+	<form action="Access.php" onsubmit="return validarLogin();" method="POST">
 		<div id="ContainerDiv">
-			<img src="CSS/Index_CSS/Images/Logo.png">
+			<img id="ProjectLogo" src="CSS/Logo.png">
 			<br><br>
 			<div class="input-container">
 				<i class="fa fa-user icon"></i>
-				<input class="input-field" type="text" name="InputUser" placeholder="Usuario">
+				<input class="input-field" type="text" name="InputUser" placeholder="Usuario" autofocus>
 			</div>
 			<div class="input-container">
 				<i class="fa fa-key icon"></i>
 				<input class="input-field" type="password" name="InputPassword" placeholder="Contraseña">
 			</div>
-			<button type="submit" id="Entrar">Entrar</button>
-			<p align="center">No tienes cuenta? <a id="RegistroLabel" href="Register.php">Regístrate</a></p>
+			<button id="Entrar">Entrar</button>
 		</div>
 	</form>
 </body>
