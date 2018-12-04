@@ -1,0 +1,48 @@
+.logo{
+  display: flex;
+  font-size: 1.5em;
+  color: Mediumslateblue;
+  margin-left: 2%;
+  align-content: center;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+header{
+  font-family: Helvetica;
+  width: auto;
+  margin: 0 auto;
+  background-color: #eaeaea;
+
+}
+ul{
+  list-style: none;
+}
+nav{
+  margin-top: -39px;
+  float:right;
+}
+#menu li>a{
+  background-color: grey;
+  color: white;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  min-width: 100px;
+}
+#menu li>a:hover{
+  color: #000;
+  background-color: #eaeaea;
+}
+#menu>li{
+  float: left;
+  text-align:center
+}
+#menu>li>ul{
+  display: none;
+}
+#menu>li:hover>ul {
+  display:block;
+}
