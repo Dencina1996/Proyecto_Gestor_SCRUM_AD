@@ -7,26 +7,58 @@
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   </head>
   <body>
-
+    <header>
       <?php
       session_start();
-      echo "<header>
-              <div class='logo'>
-                Gestor Scrum
-                <span class='logo'>
-                  <i class='fas fa-stroopwafel'></i>
-                </span>
-              </div>
-              <nav>
-                <ul id='menu'>
-                  <li><a><i class='fas fa-user-circle'></i> ".$_SESSION['InputUser']."</a>
-                    <ul>
-                      <li><a href='Logout.php'>logout</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </nav>
-            </header>";
+
+      echo "<div class='logo'>
+              Gestor Scrum
+              <span class='logo'>
+                <i class='fas fa-stroopwafel'></i>
+              </span>
+            </div>
+            <nav>
+              <ul id='menu'>
+                <li><a><i class='fas fa-user-circle'></i> ".$_SESSION['InputUser']."</a>
+                  <ul>
+                    <li><a href='Logout.php'>logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>";
       ?>
+    </header>
+
+    <?php
+    $mysqli = new mysqli("localhost", "skadi", "P@ssw0rd", "BD_Scrum");
+    if (mysqli_connect_errno()) {
+        printf("Falló la conexión: %s\n", mysqli_connect_error());
+        exit();
+    }
+    //$tipoUsuario = "SELECT Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario = ".$_SESSION['InputUser']."";
+    $consulta = "SELECT Nombre_Proyecto, Descripcion_Proyecto FROM Proyectos";
+    ?>
+
+    <div class="contenedorGlobal">
+      <h5 class="nombreContenedorGlobal">Proyectos</h5>
+      <?php
+      if ($resultado = $mysqli->query($consulta)) {
+          while ($fila = $resultado->fetch_row()) {
+            echo "
+            <div class='contenedorLocal'>
+              <h1>$fila[0]</h1>
+              <br>
+              <p>$fila[1]</p>
+            </div>
+            ";
+          }
+          $resultado->close();
+      }
+      $mysqli->close();
+       ?>
+    </div>
+    <footer>
+      David y Adrià
+    </footer>
   </body>
 </html>
