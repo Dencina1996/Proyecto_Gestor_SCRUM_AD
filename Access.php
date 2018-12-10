@@ -7,7 +7,7 @@
 	if (!isset($_SESSION['InputUser'])) {
 			$_SESSION['InputUser'] = $Usuario;
 		}
-		
+
 	$BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
 
 	$Query = $BBDD->prepare('SELECT Nombre_Usuario, Password_Usuario FROM Usuarios WHERE Nombre_Usuario=:InputUser AND Password_Usuario=SHA2(:InputPassword,512);');
@@ -19,6 +19,6 @@
 	if($Result == 1){
 		header("Location: UserPanel.php");
 	} else {
-		error_reporting(E_ALL);
+		header("Location: Index.php");
 	}
 ?>

@@ -12,6 +12,7 @@ function createError(error) {
 		ErrorDiv.appendChild(ErrorBR);
 		ErrorDiv.appendChild(ErrorText);
 		document.body.appendChild(ErrorDiv);
+		setTimeout(deleteError, 5000);
 }
 
 function deleteError() {
@@ -41,7 +42,7 @@ function validarLogin() {
 	} else {
 		Counter++;
 	}
-	
+
 	if (Counter >= 2) {
 		return true
 	} else {
