@@ -13,9 +13,6 @@
 
       echo "<div class='logo'>
               Gestor Scrum
-              <span class='logo'>
-                <i class='fas fa-stroopwafel'></i>
-              </span>
             </div>
             <nav>
               <ul id='menu'>
@@ -30,7 +27,7 @@
     </header>
 
     <?php
-    $mysqli = new mysqli("localhost", "skadi", "P@ssw0rd", "BD_Scrum");
+    $mysqli = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
     if (mysqli_connect_errno()) {
         printf("Falló la conexión: %s\n", mysqli_connect_error());
         exit();
@@ -45,11 +42,11 @@
       if ($resultado = $mysqli->query($consulta)) {
           while ($fila = $resultado->fetch_row()) {
             echo "
-            <div class='contenedorLocal'>
-              <h1>$fila[0]</h1>
+            <a href=''><div class='contenedorLocal'>
+              <h1 class='tituloProyecto'>$fila[0]</h1>
               <br>
-              <p>$fila[1]</p>
-            </div>
+              <p class='descProyecto'>$fila[1]</p>
+            </div><a>
             ";
           }
           $resultado->close();
