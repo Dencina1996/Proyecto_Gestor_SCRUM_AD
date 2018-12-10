@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 10-12-2018 a las 18:55:49
--- Versión del servidor: 5.7.23-0ubuntu0.18.04.1
+-- Tiempo de generación: 10-12-2018 a las 20:20:28
+-- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -83,9 +83,9 @@ CREATE TABLE `Proyectos` (
 --
 
 INSERT INTO `Proyectos` (`ID_Proyecto`, `Nombre_Proyecto`, `Fecha_Inicio_Proyecto`, `Fecha_Final_Proyecto`, `Descripcion_Proyecto`) VALUES
-(1, 'test1', '2018-11-29', '2018-11-30', 'Prueba test'),
-(2, 'Proyecto Gestor SCRUM', '2018-12-03', '2018-12-20', 'pagina web para Gestionar los preyectos mediante la metodologia SCRUM'),
-(3, 'Flotadores', '2018-12-11', '2018-12-17', 'Creación de nuevos flotadores que floten mejor');
+(1, 'Proyecto YLW TPV', '2018-11-29', '2018-11-30', 'Aplicación TPV con control de usuarios y terminal de venta'),
+(2, 'Proyecto Gestor SCRUM', '2018-12-03', '2018-12-20', 'Aplicación Web para la gestión de proyectos mediante la metodología de SCRUM'),
+(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP');
 
 -- --------------------------------------------------------
 

@@ -5,8 +5,9 @@
     <title>Bienvenid@ - Scrum AD</title>
     <link rel="stylesheet" type="text/css" href="CSS/UserPanel_CSS/Styles.css">
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <script type="text/javascript" src="JS/Scripts.js"></script>
   </head>
-  <body>
+  <body onclick="createError('Error')">
     <header>
       <?php
       session_start();
@@ -17,7 +18,7 @@
               <ul id='menu'>
                 <li><a><i class='fas fa-user-circle'></i> ".$_SESSION['InputUser']."</a>
                   <ul>
-                    <li><a href='Logout.php'>logout</a></li>
+                    <li><a href='Logout.php'>Cerrar Sesión</a></li>
                   </ul>
                 </li>
               </ul>
@@ -52,8 +53,5 @@
       $mysqli->close();
        ?>
     </div>
-    <footer>
-      David y Adrià
-    </footer>
   </body>
 </html>
