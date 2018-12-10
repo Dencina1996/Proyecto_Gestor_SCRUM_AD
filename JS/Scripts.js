@@ -1,7 +1,32 @@
+function createError(error) {
+	// VARIABLES
+		var ErrorDiv = document.createElement("div");
+		var ErrorImage = document.createElement("img");
+		var ErrorBR = document.createElement("br");
+		var ErrorText = document.createTextNode(error);
+	// CONFIGURATION
+		ErrorDiv.className = "ErrorDiv";
+		ErrorImage.src = "CSS/Error.png";
+	// APPEND
+		ErrorDiv.appendChild(ErrorImage);
+		ErrorDiv.appendChild(ErrorBR);
+		ErrorDiv.appendChild(ErrorText);
+		document.body.appendChild(ErrorDiv);
+}
+
+function deleteError() {
+	ErrorList = document.getElementsByClassName("ErrorDiv");
+	for (var i = 0; i < ErrorList.length; i++) {
+    	ErrorList[i].style.visibility = "hidden";
+	}
+}
+
 function validarLogin() {
 	var User = document.getElementsByName("InputUser")[0].value;
 	var Password = document.getElementsByName("InputPassword")[0].value;
 	var Counter = 0;
+
+	deleteError();
 
 	if (User.length <= 0) {
 		createError("Campo de Usuario vacío");
@@ -22,21 +47,4 @@ function validarLogin() {
 	} else {
 		return false;
 	}
-}
-
-function createError(error) {
-
-	// VARIABLES
-		var ErrorDiv = document.createElement("div");
-		var ErrorImage = document.createElement("img");
-		var ErrorBR = document.createElement("br");
-		var ErrorText = document.createTextNode(error);
-	// CONFIGURATION
-		ErrorDiv.className = "ErrorDiv";
-		ErrorImage.src = "CSS/Error.png";
-	// APPEND
-		ErrorDiv.appendChild(ErrorImage);
-		ErrorDiv.appendChild(ErrorBR);
-		ErrorDiv.appendChild(ErrorText);
-		document.body.appendChild(ErrorDiv);
 }
