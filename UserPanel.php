@@ -10,7 +10,6 @@
     <header>
       <?php
       session_start();
-
       echo "<div class='logo'>
               Gestor Scrum
               <span class='logo'>
@@ -28,9 +27,8 @@
             </nav>";
       ?>
     </header>
-
     <?php
-    $mysqli = new mysqli("localhost", "skadi", "P@ssw0rd", "BD_Scrum");
+    $mysqli = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
     if (mysqli_connect_errno()) {
         printf("Falló la conexión: %s\n", mysqli_connect_error());
         exit();

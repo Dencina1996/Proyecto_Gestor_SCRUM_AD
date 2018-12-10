@@ -9,7 +9,7 @@
 		}
 
 
-	$BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','skadi','P@ssw0rd');
+	$BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
 
 	$Query = $BBDD->prepare('SELECT Nombre_Usuario, Password_Usuario FROM Usuarios WHERE Nombre_Usuario=:InputUser AND Password_Usuario=SHA2(:InputPassword,512);');
 	$Query -> bindValue(':InputUser',$Usuario);
@@ -20,6 +20,6 @@
 	if($Result == 1){
 		header("Location: UserPanel.php");
 	} else {
-		echo "MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL";
+		error_reporting(E_ALL);
 	}
 ?>

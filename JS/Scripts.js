@@ -17,7 +17,7 @@ function createError(error) {
 function deleteError() {
 	ErrorList = document.getElementsByClassName("ErrorDiv");
 	for (var i = 0; i < ErrorList.length; i++) {
-    	ErrorList[i].style.visibility = "hidden";
+    	ErrorList[i].remove();
 	}
 }
 
