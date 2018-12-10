@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 28-11-2018 a las 17:32:35
+-- Tiempo de generación: 10-12-2018 a las 18:55:49
 -- Versión del servidor: 5.7.23-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
@@ -38,6 +38,13 @@ CREATE TABLE `Especificaciones` (
   `Estado_Especificacion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `Especificaciones`
+--
+
+INSERT INTO `Especificaciones` (`ID_Especificacion`, `Nombre_Especificacion`, `ID_Proyecto`, `ID_Usuario`, `ID_Sprint`, `Descripcion_Especificacion`, `Duracion_Especificacion`, `Dificultad_Especificacion`, `Estado_Especificacion`) VALUES
+(1, 'Especificacion 1 test', 1, 1, 1, 'Test de la Especificacion 1', '1h', 'M', 'In Progress');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +56,13 @@ CREATE TABLE `Grupos` (
   `Nombre_Grupo` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `ID_Proyecto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Grupos`
+--
+
+INSERT INTO `Grupos` (`ID_Grupo`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
+(1, 'Grupo test 1', 1);
 
 -- --------------------------------------------------------
 
@@ -63,6 +77,15 @@ CREATE TABLE `Proyectos` (
   `Fecha_Final_Proyecto` date NOT NULL,
   `Descripcion_Proyecto` varchar(256) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Proyectos`
+--
+
+INSERT INTO `Proyectos` (`ID_Proyecto`, `Nombre_Proyecto`, `Fecha_Inicio_Proyecto`, `Fecha_Final_Proyecto`, `Descripcion_Proyecto`) VALUES
+(1, 'test1', '2018-11-29', '2018-11-30', 'Prueba test'),
+(2, 'Proyecto Gestor SCRUM', '2018-12-03', '2018-12-20', 'pagina web para Gestionar los preyectos mediante la metodologia SCRUM'),
+(3, 'Flotadores', '2018-12-11', '2018-12-17', 'Creación de nuevos flotadores que floten mejor');
 
 -- --------------------------------------------------------
 
@@ -80,6 +103,13 @@ CREATE TABLE `Sprints` (
   `Estado_Sprint` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `Sprints`
+--
+
+INSERT INTO `Sprints` (`ID_Sprint`, `Nombre_Sprint`, `ID_Proyecto`, `Fecha_Inicio_Sprint`, `Fecha_Final_Sprint`, `Duracion_Sprint`, `Estado_Sprint`) VALUES
+(1, 'Sprint 1 test', 1, '2018-11-29', '2018-11-30', 20, 'Activo');
+
 -- --------------------------------------------------------
 
 --
@@ -91,8 +121,16 @@ CREATE TABLE `Usuarios` (
   `Nombre_Usuario` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Password_Usuario` varchar(512) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Perfil_Usuario` varchar(3) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `ID_Grupo` int(11) NOT NULL
+  `ID_Grupo` int(11) NOT NULL,
+  `Correo_Usuario` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Usuarios`
+--
+
+INSERT INTO `Usuarios` (`ID_Usuario`, `Nombre_Usuario`, `Password_Usuario`, `Perfil_Usuario`, `ID_Grupo`, `Correo_Usuario`) VALUES
+(1, 'test', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'SM', 1, '');
 
 --
 -- Índices para tablas volcadas
@@ -142,27 +180,27 @@ ALTER TABLE `Usuarios`
 -- AUTO_INCREMENT de la tabla `Especificaciones`
 --
 ALTER TABLE `Especificaciones`
-  MODIFY `ID_Especificacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `Grupos`
 --
 ALTER TABLE `Grupos`
-  MODIFY `ID_Grupo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `Proyectos`
 --
 ALTER TABLE `Proyectos`
-  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `Sprints`
 --
 ALTER TABLE `Sprints`
-  MODIFY `ID_Sprint` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Sprint` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
