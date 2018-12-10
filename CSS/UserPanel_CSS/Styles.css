@@ -15,10 +15,30 @@
 
 .logo{
   display: flex;
-  font-size: 1.57em;
+  font-size: 2em;
   color: Mediumslateblue;
   margin-left: 2%;
   align-content: center;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.contenedorLocal:hover{
+  background-color: Mediumslateblue;
+  color: white;
+}
+
+.tituloProyecto{
+  margin-left: 2%;
+}
+
+.descProyecto{
+  margin-left: 5%;
+  margin-top: -1%;
+  margin-bottom: 1%;
 }
 
 footer{
