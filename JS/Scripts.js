@@ -48,3 +48,12 @@ function validarLogin() {
 		return false;
 	}
 }
+
+function changeColor(element) {
+	var Icons = document.getElementById("ContainerDiv").querySelectorAll("i");
+	var i;
+	for (i = 0; i < Icons.length; i++) {
+		Icons[i].style.backgroundColor = 'white';
+	}
+	element.previousElementSibling.style.background = 'red';
+}

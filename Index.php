@@ -14,11 +14,11 @@
 			<br><br>
 			<div class="input-container">
 				<i class="fa fa-user icon"></i>
-				<input class="input-field" type="text" name="InputUser" placeholder="Usuario" autofocus>
+				<input class="input-field" type="text" name="InputUser" placeholder="Usuario" autofocus onclick="changeColor(this)">
 			</div>
 			<div class="input-container">
 				<i class="fa fa-key icon"></i>
-				<input class="input-field" type="password" name="InputPassword" placeholder="Contraseña">
+				<input class="input-field" type="password" name="InputPassword" placeholder="Contraseña" onclick="changeColor(this)">
 			</div>
 			<button id="Entrar">Entrar</button>
 		</div>
