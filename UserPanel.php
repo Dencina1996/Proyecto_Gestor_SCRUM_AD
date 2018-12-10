@@ -25,12 +25,12 @@
       ?>
     </header>
     <?php
-    $mysqli = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
-    if (mysqli_connect_errno()) {
+      $mysqli = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
+      $mysqli->set_charset("utf8");
+      if (mysqli_connect_errno()) {
         printf("Falló la conexión: %s\n", mysqli_connect_error());
         exit();
-    }
-    //$tipoUsuario = "SELECT Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario = ".$_SESSION['InputUser']."";
+      }
     $consulta = "SELECT Nombre_Proyecto, Descripcion_Proyecto FROM Proyectos";
     ?>
 
