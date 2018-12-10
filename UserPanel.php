@@ -12,9 +12,6 @@
       session_start();
       echo "<div class='logo'>
               Gestor Scrum
-              <span class='logo'>
-                <i class='fas fa-stroopwafel'></i>
-              </span>
             </div>
             <nav>
               <ul id='menu'>
@@ -43,11 +40,11 @@
       if ($resultado = $mysqli->query($consulta)) {
           while ($fila = $resultado->fetch_row()) {
             echo "
-            <div class='contenedorLocal'>
-              <h1>$fila[0]</h1>
+            <a href=''><div class='contenedorLocal'>
+              <h1 class='tituloProyecto'>$fila[0]</h1>
               <br>
-              <p>$fila[1]</p>
-            </div>
+              <p class='descProyecto'>$fila[1]</p>
+            </div><a>
             ";
           }
           $resultado->close();
