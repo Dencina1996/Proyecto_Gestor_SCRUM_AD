@@ -1,3 +1,5 @@
+// FUNCTION FOR CREATING ERROR
+
 function createError(error) {
 	// VARIABLES
 		var ErrorDiv = document.createElement("div");
@@ -6,7 +8,7 @@ function createError(error) {
 		var ErrorText = document.createTextNode(error);
 	// CONFIGURATION
 		ErrorDiv.className = "ErrorDiv";
-		ErrorImage.src = "CSS/Error.png";
+		ErrorImage.src = "CSS/ErrorIcon.png";
 	// APPEND
 		ErrorDiv.appendChild(ErrorImage);
 		ErrorDiv.appendChild(ErrorBR);
@@ -15,12 +17,16 @@ function createError(error) {
 		setTimeout(deleteError, 5000);
 }
 
+// FUNCTION FOR DELETING ERROR
+
 function deleteError() {
 	ErrorList = document.getElementsByClassName("ErrorDiv");
 	for (var i = 0; i < ErrorList.length; i++) {
     	ErrorList[i].remove();
 	}
 }
+
+// FUNCTION CHECK EMPTY FIELDS 
 
 function validarLogin() {
 	var User = document.getElementsByName("InputUser")[0].value;
@@ -50,6 +56,8 @@ function validarLogin() {
 	}
 }
 
+// FUNCTION FOR LOGIN FORM
+ 
 function changeColor(element) {
 	var Icons = document.getElementById("ContainerDiv").querySelectorAll("i");
 	var i;
@@ -57,4 +65,33 @@ function changeColor(element) {
 		Icons[i].style.backgroundColor = 'white';
 	}
 	element.previousElementSibling.style.background = 'red';
+}
+
+// FUNCTION FOR PRIVILEGES
+
+function allowedOperations() {
+	var Profile = document.getElementsByTagName("Profile")[0].id;
+	
+	if (Profile == 'SM') {
+		createProjectButton();
+	}
+}
+
+// BUTTON CREATE PROJECT
+
+function createProjectButton() {
+	// VARIABLES
+		var GlobalPanel = document.getElementsByClassName("GlobalContainer")[0];
+		var NewProjectDiv = document.createElement("div");
+		var NewProjectImage = document.createElement("img");
+		var NewProjectBR = document.createElement("br");
+		var NewProjectText = document.createTextNode("Crear Proyecto");
+	// CONFIGURATION
+		NewProjectDiv.className = 'NewProjectButton';
+		NewProjectImage.src = "CSS/NewProjectIcon.png";
+	// APPEND
+		NewProjectDiv.appendChild(NewProjectImage);
+		NewProjectDiv.appendChild(NewProjectBR);
+		NewProjectDiv.appendChild(NewProjectText);
+		document.body.lastElementChild.appendChild(NewProjectDiv);
 }

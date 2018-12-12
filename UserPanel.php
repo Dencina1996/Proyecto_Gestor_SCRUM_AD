@@ -7,51 +7,59 @@
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <script type="text/javascript" src="JS/Scripts.js"></script>
   </head>
-  <body onclick="createError('Error')">
+  <body onload="allowedOperations()">
     <header>
       <?php
-      session_start();
-      echo "<div class='logo'>
-              Gestor Scrum
-            </div>
-            <nav>
-              <ul id='menu'>
-                <li><a><i class='fas fa-user-circle'></i> ".$_SESSION['InputUser']."</a>
-                  <ul>
-                    <li><a href='Logout.php'>Cerrar Sesión</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>";
+        session_start();
+        echo "<div class='Logo'>Gestor Scrum</div>";
+        echo "<nav>";
+          echo "<ul id='Menu'>";
+            echo "<li><a><i class='fas fa-user-circle'></i> ".$_SESSION['InputUser']."</a>";
+            echo "<ul>";
+              echo "<li><a href='Logout.php'>Cerrar Sesión</a></li>";
+            echo "</ul>";
+            echo "</li>";
+          echo "</ul>";
+        echo "</nav>";
       ?>
     </header>
+
+    <!-- GET USER'S PROFILE TYPE (HIDDEN) -->
+
     <?php
-      $mysqli = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
-      $mysqli->set_charset("utf8");
-      if (mysqli_connect_errno()) {
-        printf("Falló la conexión: %s\n", mysqli_connect_error());
-        exit();
+      $Connection = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
+      $Connection->set_charset("utf8");
+      $Query = "SELECT Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario = '".$_SESSION['InputUser']."'";
+      $Result = $Connection->query($Query);
+      while ($Row = $Result->fetch_assoc()) {
+        echo "<Profile hidden id='".$Row["Perfil_Usuario"]."'></Profile>";
       }
-    $consulta = "SELECT Nombre_Proyecto, Descripcion_Proyecto FROM Proyectos";
     ?>
 
-    <div class="contenedorGlobal">
-      <h5 class="nombreContenedorGlobal">Proyectos</h5>
-      <?php
-      if ($resultado = $mysqli->query($consulta)) {
-          while ($fila = $resultado->fetch_row()) {
-            echo "
-            <a href=''><div class='contenedorLocal'>
-              <h1 class='tituloProyecto'>$fila[0]</h1>
-              <br>
-              <p class='descProyecto'>$fila[1]</p>
-            </div><a>
-            ";
-          }
-          $resultado->close();
+    <!-- GET PROJECTS FROM DATABASE -->
+
+    <?php
+      $Connection = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
+      $Connection->set_charset("utf8");
+      if (mysqli_connect_errno()) {
+        printf("Falló la conexión: %s\n", Connection_connect_error());
+        exit();
       }
-      $mysqli->close();
-       ?>
-    </div>
+      $Query = "SELECT Nombre_Proyecto, Descripcion_Proyecto FROM Proyectos";
+      echo '<div class="GlobalContainer">';
+      echo '<h5 class="GlobalContainerName">Proyectos</h5>';
+      if ($Result = $Connection->query($Query)) {
+        while ($Row = $Result->fetch_row()) {
+          echo "<a><div class='LocalContainer' onclick='allowedOperations()'>";
+          echo "<h1 class='ProjectTitle'>$Row[0]</h1>";
+          echo "<br>";
+          echo "<p class='ProjectDesc'>$Row[1]</p>";
+          echo "</div><a>";
+        }
+      $Result->close();
+      }
+      $Connection->close();
+      echo "</div>";
+    ?>
   </body>
 </html>

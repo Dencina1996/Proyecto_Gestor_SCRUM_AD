@@ -1,19 +1,19 @@
-.contenedorGlobal{
+.GlobalContainer {
   border: 3px solid black;
   margin: 7% 0.5% 0.5% 0.5%;
 }
 
-.nombreContenedorGlobal{
+.GlobalContainerName {
   text-align: right;
   margin-right: 1%;
 }
 
-.contenedorLocal{
+.LocalContainer {
   border: 1px solid black;
   margin: 2% 2% 2% 2%;
 }
 
-.logo{
+.Logo {
   display: flex;
   font-size: 2em;
   color: Mediumslateblue;
@@ -21,27 +21,27 @@
   align-content: center;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-.contenedorLocal:hover{
+.LocalContainer:hover {
   background-color: Mediumslateblue;
   color: white;
 }
 
-.tituloProyecto{
+.ProjectTitle {
   margin-left: 2%;
 }
 
-.descProyecto{
+.ProjectDesc {
   margin-left: 5%;
   margin-top: -1%;
   margin-bottom: 1%;
 }
 
-footer{
+footer {
   position: fixed;
   width: 100%;
   height:20px;
@@ -50,25 +50,28 @@ footer{
   bottom: 0;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
-header{
+
+header {
   font-family: Helvetica;
   width: auto;
   margin: 0 auto;
   background-color: #eaeaea;
-
 }
-ul{
+
+ul {
   list-style: none;
 }
-nav{
+
+nav {
   margin-top: -39px;
   float:right;
 }
-#menu li>a{
+
+#Menu li>a {
   background-color: grey;
   color: white;
   padding: 10px;
@@ -76,21 +79,24 @@ nav{
   text-decoration: none;
   min-width: 100px;
 }
-#menu li>a:hover{
+
+#Menu li>a:hover {
   color: #000;
   background-color: #eaeaea;
 }
-#menu>li{
+
+#Menu>li {
   float: left;
   text-align:center
 }
-#menu>li>ul{
+
+#Menu>li>ul {
   display: none;
 }
-#menu>li:hover>ul {
+
+#Menu>li:hover>ul {
   display:block;
 }
-
 
 @-moz-keyframes Blink{
   0% { opacity: 1.0; }
@@ -119,8 +125,7 @@ nav{
 	margin-top: 40px;
   margin-left: 0.5%;
   margin-bottom: 2%;
-	padding-left: 25px;
-  padding-right: 25px;
+	padding: 10px;
 	border: solid 3px black;
 	background-color: yellow;
 	text-align: center;
@@ -134,4 +139,15 @@ nav{
 	-webkit-animation-duration: 2s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
+}
+
+.NewProjectButton {
+  margin: 5px;
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+  border: solid 3px black;
+  border-radius: 2px 2px 2px 2px;
+  background-color: green;
+  text-align: center;  
 }
