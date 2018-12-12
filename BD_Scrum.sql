@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 10-12-2018 a las 20:20:28
+-- Tiempo de generación: 12-12-2018 a las 20:28:48
 -- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
@@ -75,17 +75,19 @@ CREATE TABLE `Proyectos` (
   `Nombre_Proyecto` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Fecha_Inicio_Proyecto` date NOT NULL,
   `Fecha_Final_Proyecto` date NOT NULL,
-  `Descripcion_Proyecto` varchar(256) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+  `Descripcion_Proyecto` varchar(256) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `PO_Proyecto` varchar(100) NOT NULL,
+  `SM_Proyecto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Proyectos`
 --
 
-INSERT INTO `Proyectos` (`ID_Proyecto`, `Nombre_Proyecto`, `Fecha_Inicio_Proyecto`, `Fecha_Final_Proyecto`, `Descripcion_Proyecto`) VALUES
-(1, 'Proyecto YLW TPV', '2018-11-29', '2018-11-30', 'Aplicación TPV con control de usuarios y terminal de venta'),
-(2, 'Proyecto Gestor SCRUM', '2018-12-03', '2018-12-20', 'Aplicación Web para la gestión de proyectos mediante la metodología de SCRUM'),
-(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP');
+INSERT INTO `Proyectos` (`ID_Proyecto`, `Nombre_Proyecto`, `Fecha_Inicio_Proyecto`, `Fecha_Final_Proyecto`, `Descripcion_Proyecto`, `PO_Proyecto`, `SM_Proyecto`) VALUES
+(1, 'Proyecto YLW TPV', '2018-11-29', '2018-11-30', 'Aplicación TPV con control de usuarios y terminal de venta', 'Enric Mieza', 'Leandro Zabala'),
+(2, 'Proyecto Gestor SCRUM', '2018-12-03', '2018-12-20', 'Aplicación Web para la gestión de proyectos mediante la metodología de SCRUM', 'Enric Mieza', 'Leandro Zabala'),
+(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP', 'Enric Mieza', 'Leandro Zabala');
 
 -- --------------------------------------------------------
 
@@ -119,6 +121,7 @@ INSERT INTO `Sprints` (`ID_Sprint`, `Nombre_Sprint`, `ID_Proyecto`, `Fecha_Inici
 CREATE TABLE `Usuarios` (
   `ID_Usuario` int(11) NOT NULL,
   `Nombre_Usuario` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `Nombre_Apellidos` varchar(100) NOT NULL,
   `Password_Usuario` varchar(512) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Perfil_Usuario` varchar(3) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `ID_Grupo` int(11) NOT NULL,
@@ -129,8 +132,10 @@ CREATE TABLE `Usuarios` (
 -- Volcado de datos para la tabla `Usuarios`
 --
 
-INSERT INTO `Usuarios` (`ID_Usuario`, `Nombre_Usuario`, `Password_Usuario`, `Perfil_Usuario`, `ID_Grupo`, `Correo_Usuario`) VALUES
-(1, 'test', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'SM', 1, '');
+INSERT INTO `Usuarios` (`ID_Usuario`, `Nombre_Usuario`, `Nombre_Apellidos`, `Password_Usuario`, `Perfil_Usuario`, `ID_Grupo`, `Correo_Usuario`) VALUES
+(1, 'Master', 'Leandro Zabala', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'SM', 1, 'Master@scrum.com'),
+(2, 'Owner', 'Enric Mieza', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'PO', 1, 'ProductOwner@scrum.com'),
+(3, 'Developer', 'David Encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1, 'Developer@scrum.com');
 
 --
 -- Índices para tablas volcadas
@@ -200,7 +205,7 @@ ALTER TABLE `Sprints`
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
