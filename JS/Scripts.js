@@ -67,6 +67,16 @@ function changeColor(element) {
 	element.previousElementSibling.style.background = 'red';
 }
 
+// FUNCTION FOR SHOWING PROJECT ATTRIBUTES
+
+function showProjectInfo(element) {
+	var Tags = element.getElementsByClassName("ProjectInfo");
+	for (var i = 0; i <= Tags.length; i++) {
+		Tags[i].hidden = false;
+	}
+}
+
+
 // FUNCTION FOR PRIVILEGES
 
 function allowedOperations() {
@@ -81,13 +91,13 @@ function allowedOperations() {
 
 function createProjectButton() {
 	// VARIABLES
-		var GlobalPanel = document.getElementsByClassName("GlobalContainer")[0];
 		var NewProjectDiv = document.createElement("div");
 		var NewProjectImage = document.createElement("img");
 		var NewProjectBR = document.createElement("br");
-		var NewProjectText = document.createTextNode("Crear Proyecto");
+		var NewProjectText = document.createTextNode("Crear Nuevo Proyecto");
 	// CONFIGURATION
 		NewProjectDiv.className = 'NewProjectButton';
+		NewProjectDiv.onclick = createProject;
 		NewProjectImage.src = "CSS/NewProjectIcon.png";
 	// APPEND
 		NewProjectDiv.appendChild(NewProjectImage);
@@ -95,3 +105,10 @@ function createProjectButton() {
 		NewProjectDiv.appendChild(NewProjectText);
 		document.body.lastElementChild.appendChild(NewProjectDiv);
 }
+
+	// REDIRECT TO NEW PROJECT FORM
+
+	function createProject() {
+		window.location.href = 'NewProjectForm.php';
+	}
+

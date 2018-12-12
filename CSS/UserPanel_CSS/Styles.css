@@ -1,6 +1,6 @@
 .GlobalContainer {
   border: 3px solid black;
-  margin: 7% 0.5% 0.5% 0.5%;
+  margin: 2.5% 0.5% 0.5% 0.5%;
 }
 
 .GlobalContainerName {
@@ -11,6 +11,7 @@
 .LocalContainer {
   border: 1px solid black;
   margin: 2% 2% 2% 2%;
+  cursor: pointer;
 }
 
 .Logo {
@@ -36,6 +37,12 @@ a {
 }
 
 .ProjectDesc {
+  margin-left: 5%;
+  margin-top: -1%;
+  margin-bottom: 1%;
+}
+
+.ProjectInfo {
   margin-left: 5%;
   margin-top: -1%;
   margin-bottom: 1%;
@@ -148,6 +155,13 @@ nav {
   padding: 10px;
   border: solid 3px black;
   border-radius: 2px 2px 2px 2px;
-  background-color: green;
+  background-color: #073B00;
+  color: white;
   text-align: center;  
+  cursor: pointer;
+  margin: 1.5% 0% 0% 3%;  
+}
+
+.NewProjectButton:hover {
+  background-color: #139F00;
 }

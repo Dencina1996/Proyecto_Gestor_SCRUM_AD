@@ -45,15 +45,20 @@
         printf("Falló la conexión: %s\n", Connection_connect_error());
         exit();
       }
-      $Query = "SELECT Nombre_Proyecto, Descripcion_Proyecto FROM Proyectos";
+      $Query = "SELECT *  FROM Proyectos";
       echo '<div class="GlobalContainer">';
       echo '<h5 class="GlobalContainerName">Proyectos</h5>';
       if ($Result = $Connection->query($Query)) {
         while ($Row = $Result->fetch_row()) {
-          echo "<a><div class='LocalContainer' onclick='allowedOperations()'>";
-          echo "<h1 class='ProjectTitle'>$Row[0]</h1>";
+          echo "<a><div class='LocalContainer' onclick='showProjectInfo(this)'>";
+          echo "<h1 class='ProjectTitle'>$Row[1]</h1>";
           echo "<br>";
-          echo "<p class='ProjectDesc'>$Row[1]</p>";
+          echo "<p class='ProjectDesc'><b>$Row[4]</b></p>";
+          echo "<br>";
+          echo "<p class='ProjectInfo' hidden>    <b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
+          echo "<p class='ProjectInfo' hidden>    <b>Fecha de Finalización (Prevista):</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
+          echo "<p class='ProjectInfo' hidden>    <b>Product Owner:</b> $Row[5]</p>";
+          echo "<p class='ProjectInfo' hidden>    <b>Scrum Master:</b> $Row[6]</p>";
           echo "</div><a>";
         }
       $Result->close();
