@@ -124,14 +124,13 @@ function createProjectButton() {
 			var NewProjectPO = document.createElement("input");
 			var NewProjectSM = document.createElement("input");
 			var NewProjectDescription = document.createElement("input");
-			var NewProjectAdd = document.createElement("button");
+			var NewProjectAdd = document.createElement("input");
 		// CONFIGURATION
 			// DIV
 				NewProjectDiv.setAttribute("class", "GlobalContainer");
 			// PROJECT FORM
 				NewProjectForm.setAttribute("action", "CreateProject.php");
 				NewProjectForm.setAttribute("method", "POST");
-				NewProjectForm.setAttribute("onsubmit", "return validateNewProject();");
 			// PROJECT TITLE
 				NewProjectTitle.setAttribute("class", "GlobalContainerName");
 				NewProjectTitle.innerHTML = "Nuevo Proyecto";
@@ -176,19 +175,21 @@ function createProjectButton() {
 				NewProjectDescription.style.width = "75%";	
 			// PROJECT ADD BUTTON
 				NewProjectAdd.setAttribute("id", "NewProjectAddButton");
-				NewProjectAdd.innerHTML = "Crear Proyecto";
-				NewProjectAdd.setAttribute("onclick", "this.submit()")
+				NewProjectAdd.setAttribute("type", "submit");
+				//NewProjectAdd.innerHTML = "Crear Proyecto";
 		// APPEND
-			NewProjectDiv.appendChild(NewProjectForm);
 			NewProjectDiv.appendChild(NewProjectTitle);
-			NewProjectDiv.appendChild(NewProjectName);
-			NewProjectDiv.appendChild(NewProjectInitDate);
-			NewProjectDiv.appendChild(NewProjectFinalDate);
-			NewProjectDiv.appendChild(NewProjectPO);
-			NewProjectDiv.appendChild(NewProjectSM);
-			NewProjectDiv.appendChild(NewProjectBR);
-			NewProjectDiv.appendChild(NewProjectDescription);
-			NewProjectDiv.appendChild(NewProjectAdd);
+
+			NewProjectForm.appendChild(NewProjectName);
+			NewProjectForm.appendChild(NewProjectInitDate);
+			NewProjectForm.appendChild(NewProjectFinalDate);
+			NewProjectForm.appendChild(NewProjectPO);
+			NewProjectForm.appendChild(NewProjectSM);
+			NewProjectForm.appendChild(NewProjectBR);
+			NewProjectForm.appendChild(NewProjectDescription);
+			NewProjectForm.appendChild(NewProjectAdd);
+
+			NewProjectDiv.appendChild(NewProjectForm);
 			document.body.lastElementChild.appendChild(NewProjectDiv);
 	}
 
