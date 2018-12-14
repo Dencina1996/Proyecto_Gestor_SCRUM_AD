@@ -124,12 +124,13 @@ function createProjectButton() {
 			var NewProjectPO = document.createElement("input");
 			var NewProjectSM = document.createElement("input");
 			var NewProjectDescription = document.createElement("input");
-			var NewProjectAdd = document.createElement("input");
+			var NewProjectAdd = document.createElement("button");
 		// CONFIGURATION
 			// DIV
 				NewProjectDiv.setAttribute("class", "GlobalContainer");
 			// PROJECT FORM
 				NewProjectForm.setAttribute("action", "CreateProject.php");
+				NewProjectForm.setAttribute("onsubmit", "return validateNewProject();");
 				NewProjectForm.setAttribute("method", "POST");
 			// PROJECT TITLE
 				NewProjectTitle.setAttribute("class", "GlobalContainerName");
@@ -175,8 +176,7 @@ function createProjectButton() {
 				NewProjectDescription.style.width = "75%";	
 			// PROJECT ADD BUTTON
 				NewProjectAdd.setAttribute("id", "NewProjectAddButton");
-				NewProjectAdd.setAttribute("type", "submit");
-				//NewProjectAdd.innerHTML = "Crear Proyecto";
+				NewProjectAdd.text = "Crear Proyecto";
 		// APPEND
 			NewProjectDiv.appendChild(NewProjectTitle);
 
@@ -194,9 +194,19 @@ function createProjectButton() {
 	}
 
 function validateNewProject() {
-	if (document.getElementsByClassName("Input")[0].value == "X") {
-		return true
-	} else {
+	var Inputs = document.getElementsByClassName("Input");
+	var CounterEmpty = 0;
+	for (var i = 0; i < Inputs.length; i++) {
+		if (Inputs[i].value == "") {
+			Inputs[i].style.border = 'solid 3px red';
+			CounterEmpty ++;
+		}
+	}
+
+	if (CounterEmpty > 0) {
+		
 		return false;
+	} else {
+		return true;
 	}
 }
