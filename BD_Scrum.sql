@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 12-12-2018 a las 20:28:48
+-- Tiempo de generación: 14-12-2018 a las 16:54:07
 -- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `BD_Scrum`
 --
+CREATE DATABASE IF NOT EXISTS `BD_Scrum` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `BD_Scrum`;
 
 -- --------------------------------------------------------
 
@@ -36,7 +38,7 @@ CREATE TABLE `Especificaciones` (
   `Duracion_Especificacion` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Dificultad_Especificacion` varchar(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Estado_Especificacion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Especificaciones`
@@ -55,7 +57,7 @@ CREATE TABLE `Grupos` (
   `ID_Grupo` int(11) NOT NULL,
   `Nombre_Grupo` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `ID_Proyecto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Grupos`
@@ -76,9 +78,9 @@ CREATE TABLE `Proyectos` (
   `Fecha_Inicio_Proyecto` date NOT NULL,
   `Fecha_Final_Proyecto` date NOT NULL,
   `Descripcion_Proyecto` varchar(256) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `PO_Proyecto` varchar(100) NOT NULL,
-  `SM_Proyecto` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `PO_Proyecto` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `SM_Proyecto` varchar(100) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Proyectos`
@@ -103,7 +105,7 @@ CREATE TABLE `Sprints` (
   `Fecha_Final_Sprint` date NOT NULL,
   `Duracion_Sprint` int(11) NOT NULL,
   `Estado_Sprint` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Sprints`
@@ -121,12 +123,12 @@ INSERT INTO `Sprints` (`ID_Sprint`, `Nombre_Sprint`, `ID_Proyecto`, `Fecha_Inici
 CREATE TABLE `Usuarios` (
   `ID_Usuario` int(11) NOT NULL,
   `Nombre_Usuario` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Nombre_Apellidos` varchar(100) NOT NULL,
+  `Nombre_Apellidos` varchar(100) CHARACTER SET latin1 NOT NULL,
   `Password_Usuario` varchar(512) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Perfil_Usuario` varchar(3) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `ID_Grupo` int(11) NOT NULL,
-  `Correo_Usuario` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Correo_Usuario` varchar(100) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `Usuarios`
@@ -236,6 +238,3 @@ ALTER TABLE `Sprints`
 ALTER TABLE `Usuarios`
   ADD CONSTRAINT `Usuarios_ibfk_1` FOREIGN KEY (`ID_Grupo`) REFERENCES `Grupos` (`ID_Grupo`);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
