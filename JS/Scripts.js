@@ -141,6 +141,7 @@ function createProjectButton() {
 				NewProjectName.setAttribute("name", "PName");
 				NewProjectName.setAttribute("placeholder", "Nombre del Proyecto");
 				NewProjectName.setAttribute("maxlength", "50");
+				NewProjectName.setAttribute("autocomplete", "off");
 			// PROJECT INITIAL DATE INPUT
 				NewProjectInitDate.setAttribute("type", "text");
 				NewProjectInitDate.setAttribute("class", "Input");
@@ -148,6 +149,7 @@ function createProjectButton() {
 				NewProjectInitDate.setAttribute("placeholder", "Fecha de Inicio (Año/Mes/Día)");
 				NewProjectInitDate.setAttribute("onmouseover", "(this.type='date')");
 				NewProjectInitDate.setAttribute("onmouseout", "(this.type='text')");
+				NewProjectInitDate.setAttribute("autocomplete", "off");
 			// PROJECT FINAL DATE INPUT
 				NewProjectFinalDate.setAttribute("type", "text");
 				NewProjectFinalDate.setAttribute("class", "Input");
@@ -155,28 +157,32 @@ function createProjectButton() {
 				NewProjectFinalDate.setAttribute("placeholder", "Fecha de Fin (Año/Mes/Día)");
 				NewProjectFinalDate.setAttribute("onmouseover", "(this.type='date')");
 				NewProjectFinalDate.setAttribute("onmouseout", "(this.type='text')");
+				NewProjectFinalDate.setAttribute("autocomplete", "off");
 			// PROJECT PRODUCT OWNER INPUT
 				NewProjectPO.setAttribute("type", "text");
 				NewProjectPO.setAttribute("class", "Input");
 				NewProjectPO.setAttribute("name", "PPO");
 				NewProjectPO.setAttribute("placeholder", "Product Owner");
 				NewProjectPO.setAttribute("maxlength", "100");
+				NewProjectPO.setAttribute("autocomplete", "off");
 			// PROJECT SCRUM MASTER INPUT
 				NewProjectSM.setAttribute("type", "text");
 				NewProjectSM.setAttribute("class", "Input");
 				NewProjectSM.setAttribute("name", "PSM");
 				NewProjectSM.setAttribute("placeholder", "Scrum Master");	
 				NewProjectSM.setAttribute("maxlength", "100");
+				NewProjectSM.setAttribute("autocomplete", "off");
 			// PROJECT DESCRIPTION INPUT
 				NewProjectDescription.setAttribute("type", "textarea");
 				NewProjectDescription.setAttribute("class", "Input");
 				NewProjectDescription.setAttribute("name", "PDescription");
 				NewProjectDescription.setAttribute("placeholder", "Description");
 				NewProjectDescription.setAttribute("maxlength", "256");
-				NewProjectDescription.style.width = "75%";	
+				NewProjectDescription.setAttribute("autocomplete", "off");
+				NewProjectDescription.style.width = "75%";
 			// PROJECT ADD BUTTON
 				NewProjectAdd.setAttribute("id", "NewProjectAddButton");
-				NewProjectAdd.text = "Crear Proyecto";
+				NewProjectAdd.innerHTML = "Crear Proyecto";
 		// APPEND
 			NewProjectDiv.appendChild(NewProjectTitle);
 
@@ -204,7 +210,7 @@ function validateNewProject() {
 	}
 
 	if (CounterEmpty > 0) {
-		
+
 		return false;
 	} else {
 		return true;
