@@ -8,7 +8,8 @@
     $query=$pdo->prepare("SELECT Nombre_Usuario, Correo_Usuario from Usuarios where Correo_Usuario='$email'");
     $query->execute();
     $numQuery = $query->rowcount();
-    if($numQuery!=0){
+    echo $email;  
+ if($numQuery!=0){
       $datoUser= $query->fetch();
       $cuerpo = "https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/pasword.php?user=".$datoUser['Nombre_Usuario'];
       echo $cuerpo;
