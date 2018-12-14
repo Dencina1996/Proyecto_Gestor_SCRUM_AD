@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
+<<<<<<< HEAD
 -- Tiempo de generación: 14-12-2018 a las 16:54:07
+=======
+-- Tiempo de generación: 14-12-2018 a las 19:17:59
+>>>>>>> c195822c3f023a50d02e4b90cb9c06fc2ab8d31b
 -- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
@@ -89,7 +93,8 @@ CREATE TABLE `Proyectos` (
 INSERT INTO `Proyectos` (`ID_Proyecto`, `Nombre_Proyecto`, `Fecha_Inicio_Proyecto`, `Fecha_Final_Proyecto`, `Descripcion_Proyecto`, `PO_Proyecto`, `SM_Proyecto`) VALUES
 (1, 'Proyecto YLW TPV', '2018-11-29', '2018-11-30', 'Aplicación TPV con control de usuarios y terminal de venta', 'Enric Mieza', 'Leandro Zabala'),
 (2, 'Proyecto Gestor SCRUM', '2018-12-03', '2018-12-20', 'Aplicación Web para la gestión de proyectos mediante la metodología de SCRUM', 'Enric Mieza', 'Leandro Zabala'),
-(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP', 'Enric Mieza', 'Leandro Zabala');
+(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP', 'Enric Mieza', 'Leandro Zabala'),
+(5, 'Proyecto Oauth2', '2018-12-14', '2019-04-10', 'Implementación del procolo Oauth2 (Google) para el formulario de Login', 'Enric Mieza', 'Leandro Zabala');
 
 -- --------------------------------------------------------
 
@@ -197,7 +202,7 @@ ALTER TABLE `Grupos`
 -- AUTO_INCREMENT de la tabla `Proyectos`
 --
 ALTER TABLE `Proyectos`
-  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `Sprints`
 --

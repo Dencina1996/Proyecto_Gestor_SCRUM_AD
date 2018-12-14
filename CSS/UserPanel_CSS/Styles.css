@@ -1,3 +1,7 @@
+* {
+  font-family: 'Lato', sans-serif;
+}
+
 .GlobalContainer {
   border: 3px solid black;
   margin: 2.5% 0.5% 0.5% 0.5%;
@@ -18,9 +22,10 @@
 .Logo {
   display: flex;
   font-size: 2em;
-  color: Mediumslateblue;
+  color: white;
   margin-left: 2%;
   align-content: center;
+  font-weight: bold;
 }
 
 a {
@@ -29,7 +34,7 @@ a {
 }
 
 .LocalContainer:hover {
-  background-color: Mediumslateblue;
+  background-color: #139F00;
   color: white;
 }
 
@@ -67,7 +72,7 @@ header {
   font-family: Helvetica;
   width: auto;
   margin: 0 auto;
-  background-color: #eaeaea;
+  background-color: #073B00;
 }
 
 ul {
@@ -80,7 +85,7 @@ nav {
 }
 
 #Menu li>a {
-  background-color: grey;
+  background-color: #073B00;
   color: white;
   padding: 10px;
   display: block;
@@ -89,8 +94,8 @@ nav {
 }
 
 #Menu li>a:hover {
-  color: #000;
-  background-color: #eaeaea;
+  color: white;
+  background-color: #139F00;
 }
 
 #Menu>li {
@@ -198,4 +203,19 @@ nav {
 
 #NewProjectAddButton:hover {
   background-color: red;
+}
+
+#NewProjectBack{
+  background-color: white;
+  border: solid 2px black;
+  border-radius: 4px;
+  color: black;
+  padding: 15px 20px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+}
+
+#NewProjectBack:hover {
+  background-color: blue;
 }
