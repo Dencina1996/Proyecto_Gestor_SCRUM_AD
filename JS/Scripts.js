@@ -125,8 +125,10 @@ function createProjectButton() {
 			var NewProjectSM = document.createElement("input");
 			var NewProjectDescription = document.createElement("input");
 			var NewProjectAdd = document.createElement("button");
+			var NewProjectBack = document.createElement("button");
 		// CONFIGURATION
 			// DIV
+				NewProjectDiv.setAttribute("id", "NewProjectDiv");
 				NewProjectDiv.setAttribute("class", "GlobalContainer");
 			// PROJECT FORM
 				NewProjectForm.setAttribute("action", "CreateProject.php");
@@ -183,6 +185,10 @@ function createProjectButton() {
 			// PROJECT ADD BUTTON
 				NewProjectAdd.setAttribute("id", "NewProjectAddButton");
 				NewProjectAdd.innerHTML = "Crear Proyecto";
+			// BACK TO USER PANEL
+				NewProjectBack.setAttribute("id", "NewProjectBack");
+				NewProjectBack.setAttribute("onclick", "backFromNewP()");
+				NewProjectBack.innerHTML = "Volver Atrás";
 		// APPEND
 			NewProjectDiv.appendChild(NewProjectTitle);
 
@@ -194,6 +200,8 @@ function createProjectButton() {
 			NewProjectForm.appendChild(NewProjectBR);
 			NewProjectForm.appendChild(NewProjectDescription);
 			NewProjectForm.appendChild(NewProjectAdd);
+			NewProjectForm.appendChild(NewProjectBR);
+			NewProjectForm.appendChild(NewProjectBack);
 
 			NewProjectDiv.appendChild(NewProjectForm);
 			document.body.lastElementChild.appendChild(NewProjectDiv);
@@ -203,16 +211,24 @@ function validateNewProject() {
 	var Inputs = document.getElementsByClassName("Input");
 	var CounterEmpty = 0;
 	for (var i = 0; i < Inputs.length; i++) {
+		Inputs[i].style.border = 'solid 3px black';
+		Inputs[i].style.boxShadow = null;
 		if (Inputs[i].value == "") {
 			Inputs[i].style.border = 'solid 3px red';
+			Inputs[i].style.boxShadow = '0px 0px 10px 5px #888888';
 			CounterEmpty ++;
 		}
 	}
 
 	if (CounterEmpty > 0) {
-
 		return false;
 	} else {
 		return true;
 	}
+}
+
+function backFromNewP() {
+	document.getElementById("NewProjectDiv").remove();
+	document.getElementsByClassName("NewProjectButton")[0].remove();
+	createProjectButton();
 }
