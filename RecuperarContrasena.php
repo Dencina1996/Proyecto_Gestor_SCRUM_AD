@@ -1,5 +1,6 @@
 <?php
   include 'funcionesPHP.php';
+  $confirmacio = null;
   if(!empty($_POST)){
     $email = $_POST['email'];
     $pdo = conectar();
@@ -12,7 +13,7 @@
       $cuerpo = "https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/pasword.php?=$datoUser[0]";
       echo $cuerpo;
       mail($email,"Resetear contraseña",$cuerpo);
-
+      $confirmacio = "Correu enviat";
     }else{
       echo "No existe un usuario con este correo";
     }
@@ -29,6 +30,8 @@
         <input id="email" type="email" class="form-control" name="email" placeholder="email" required>
         <button type="submit" name="button">Enviar</button>
     </form>
-    <?php  ?>
+    <?php if($confirmacio!=Null){
+      echo $confirmacio;
+    } ?>
   </body>
 </html>
