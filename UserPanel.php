@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="CSS/Logo.png">
     <script type="text/javascript" src="JS/Scripts.js"></script>
   </head>
-  <body onload="allowedOperations()">
+  <body onload="allowedOperations(), hidePreviousProjects()">
     <header>
       <?php
         session_start();

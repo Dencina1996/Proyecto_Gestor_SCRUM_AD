@@ -22,7 +22,7 @@
 				<input class="input-field" type="password" name="InputPassword" placeholder="Contraseña" onclick="changeColor(this)">
 			</div>
 			<button id="Entrar">Entrar</button>
-			<a href="RecuperarContrasena.php">Recuperar Contraseña</a>
+			<a href="PasswordRecovery.php">Recuperar Contraseña</a>
 		</div>
 	</form>
 </body>

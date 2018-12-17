@@ -76,7 +76,6 @@ function showProjectInfo(element) {
 	}
 }
 
-
 // FUNCTION FOR PRIVILEGES
 
 function allowedOperations() {
