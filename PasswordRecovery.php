@@ -1,14 +1,5 @@
 <?php
-  try {
-    $BD_User = 'scrum';
-    $Password = 'P@ssw0rd';
-    $PDO = new PDO ("mysql:host=localhost;dbname=BD_Scrum","$BD_User","$Password");
-  } catch (PDOException $e) {
-    echo "Failed to get db handler : ".$e->getMessage()."\n";
-  }
-  
-?>
-<?php
+  include 'PHPFunctions.php';
   $Checked = null;
   if (!empty($_POST)) {
     $Mail = $_POST['Mail'];
@@ -45,7 +36,7 @@
     <?php
       if ($Checked != Null){
         echo $Checked;
-      } 
+      }
     ?>
   </body>
 </html>
