@@ -9,9 +9,9 @@
 
   $Connection = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
   $Connection->set_charset("utf8");
-  if (mysqli_connect_errno()) {
-    printf("Falló la conexión: %s\n", Connection_connect_error());
-    exit();
+  if (MYSQLI_REPORT_ERROR) {
+    echo '<script>alert("Formato de Fecha incorrecto.");</script>';
+    header("Location: UserPanel.php");
   }
   $Query = "INSERT INTO Proyectos VALUES (null,'".$PName."','".$PInitD."','".$PFinalD."','".$PDescription."','".$PPO."','".$PSM."')";
 

@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/UserPanel_CSS/Styles.css">
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="icon" type="image/png" href="CSS/Logo.png">
     <script type="text/javascript" src="JS/Scripts.js"></script>
   </head>
   <body onload="allowedOperations()">
@@ -32,8 +33,10 @@
       $Connection->set_charset("utf8");
       $Query = "SELECT Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario = '".$_SESSION['InputUser']."'";
       $Result = $Connection->query($Query);
+      $UP;
       while ($Row = $Result->fetch_assoc()) {
-        echo "<Profile hidden id='".$Row["Perfil_Usuario"]."'></Profile>";
+        $UP = $Row["Perfil_Usuario"];
+        echo "<Profile hidden id='".$UP."'></Profile>";
       }
     ?>
 
@@ -46,7 +49,13 @@
         printf("Falló la conexión: %s\n", Connection_connect_error());
         exit();
       }
-      $Query = "SELECT *  FROM Proyectos";
+
+      if ($UP == "SM") {
+        $Query = "SELECT * FROM Proyectos";
+      } elseif ($UP != "SM") {
+        $Query = "SELECT P.* FROM Proyectos P, Grupos G, Usuarios U 
+        WHERE P.ID_Proyecto = G.ID_Proyecto AND U.ID_Grupo = G.ID_Grupo AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';"; 
+      }
       echo '<div class="GlobalContainer">';
       echo '<h5 class="GlobalContainerName">Proyectos</h5>';
       if ($Result = $Connection->query($Query)) {
