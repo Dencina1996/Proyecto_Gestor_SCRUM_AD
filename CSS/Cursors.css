@@ -1,0 +1,11 @@
+[onclick] {
+	cursor: url(Cursors/Pointer.png), default;
+}
+
+:hover {
+	cursor: url(Cursors/Pointer.png), default;	
+}
+
+html {
+	cursor: url(Cursors/Default.png), default;
+}

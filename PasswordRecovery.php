@@ -6,13 +6,12 @@
   } catch (PDOException $e) {
     echo "Failed to get db handler : ".$e->getMessage()."\n";
   }
-  
 ?>
 <?php
   $Checked = null;
   if (!empty($_POST)) {
     $Mail = $_POST['Mail'];
-    $Query=$PDO->prepare("SELECT ID_Usuario, Correo_Usuario from Usuarios where Correo_Usuario='$Mail'");
+    $Query = $PDO->prepare("SELECT ID_Usuario, Correo_Usuario from Usuarios where Correo_Usuario='$Mail'");
     $Query->execute();
     $Query_Count = $Query->rowcount();
     echo $Mail;

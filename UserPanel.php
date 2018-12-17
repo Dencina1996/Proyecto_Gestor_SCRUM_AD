@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Bienvenid@ - Scrum AD</title>
     <link rel="stylesheet" type="text/css" href="CSS/UserPanel_CSS/Styles.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Cursors.css">
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="icon" type="image/png" href="CSS/Logo.png">
