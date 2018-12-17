@@ -7,13 +7,13 @@
     $Query = $PDO->prepare("SELECT ID_Usuario, Correo_Usuario from Usuarios where Correo_Usuario='$Mail'");
     $Query->execute();
     $Query_Count = $Query->rowcount();
-    echo $Mail;
+    //echo $Mail;
     if($Query_Count!=0){
       $UserData= $Query->fetch();
       $Body = " No responder a este correo.\n
       Link de Recuperación: \n
-      https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/Password.php?User=".$UserData['ID_Usuario'];
-      echo $Body;
+      https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/Password.php?user=".$UserData['ID_Usuario'];
+      //echo $Body;
       $Title = "Resetear contraseña";
       $Headers = "From: NoReply@GestorScrum.com";
       mail($UserData['Correo_Usuario'], $Title, $Body, $Headers);
