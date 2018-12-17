@@ -1,13 +1,13 @@
 <?php
-function conectar(){
+function Connect(){
   try {
-    $user = 'scrum';
-    $pasword = 'P@ssw0rd';
-    $pdo = new PDO ("mysql:host=localhost;dbname=BD_Scrum","$user","$pasword");
+    $User = 'scrum';
+    $Password = 'P@ssw0rd';
+    $PDO = new PDO ("mysql:host=localhost;dbname=BD_Scrum","$User","$Password");
 
   } catch (PDOException $e) {
     echo "Failed to get db handler : ".$e->getMessage()."\n";
   }
-  return $pdo;
+  return $PDO;
 }
  ?>
