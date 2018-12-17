@@ -7,7 +7,8 @@ Fecha de Inicio: 26/11/2018
 
 · ARCHIVO SQL PARA GENERAR LA BBDD
 
-	BD_Scrum.sql
+	BD_Scrum.sql 
+	Usuario para conectarse a la BBDD User: scrum Password: P@ssw0rd.
 
 · CREDENCIALES DE LA BBDD
 

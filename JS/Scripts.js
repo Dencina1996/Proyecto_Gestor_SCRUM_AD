@@ -124,12 +124,15 @@ function createProjectButton() {
 			var NewProjectPO = document.createElement("input");
 			var NewProjectSM = document.createElement("input");
 			var NewProjectDescription = document.createElement("input");
-			var NewProjectAdd = document.createElement("input");
+			var NewProjectAdd = document.createElement("button");
+			var NewProjectBack = document.createElement("button");
 		// CONFIGURATION
 			// DIV
+				NewProjectDiv.setAttribute("id", "NewProjectDiv");
 				NewProjectDiv.setAttribute("class", "GlobalContainer");
 			// PROJECT FORM
 				NewProjectForm.setAttribute("action", "CreateProject.php");
+				NewProjectForm.setAttribute("onsubmit", "return validateNewProject();");
 				NewProjectForm.setAttribute("method", "POST");
 			// PROJECT TITLE
 				NewProjectTitle.setAttribute("class", "GlobalContainerName");
@@ -140,6 +143,7 @@ function createProjectButton() {
 				NewProjectName.setAttribute("name", "PName");
 				NewProjectName.setAttribute("placeholder", "Nombre del Proyecto");
 				NewProjectName.setAttribute("maxlength", "50");
+				NewProjectName.setAttribute("autocomplete", "off");
 			// PROJECT INITIAL DATE INPUT
 				NewProjectInitDate.setAttribute("type", "text");
 				NewProjectInitDate.setAttribute("class", "Input");
@@ -147,6 +151,7 @@ function createProjectButton() {
 				NewProjectInitDate.setAttribute("placeholder", "Fecha de Inicio (Año/Mes/Día)");
 				NewProjectInitDate.setAttribute("onmouseover", "(this.type='date')");
 				NewProjectInitDate.setAttribute("onmouseout", "(this.type='text')");
+				NewProjectInitDate.setAttribute("autocomplete", "off");
 			// PROJECT FINAL DATE INPUT
 				NewProjectFinalDate.setAttribute("type", "text");
 				NewProjectFinalDate.setAttribute("class", "Input");
@@ -154,29 +159,36 @@ function createProjectButton() {
 				NewProjectFinalDate.setAttribute("placeholder", "Fecha de Fin (Año/Mes/Día)");
 				NewProjectFinalDate.setAttribute("onmouseover", "(this.type='date')");
 				NewProjectFinalDate.setAttribute("onmouseout", "(this.type='text')");
+				NewProjectFinalDate.setAttribute("autocomplete", "off");
 			// PROJECT PRODUCT OWNER INPUT
 				NewProjectPO.setAttribute("type", "text");
 				NewProjectPO.setAttribute("class", "Input");
 				NewProjectPO.setAttribute("name", "PPO");
 				NewProjectPO.setAttribute("placeholder", "Product Owner");
 				NewProjectPO.setAttribute("maxlength", "100");
+				NewProjectPO.setAttribute("autocomplete", "off");
 			// PROJECT SCRUM MASTER INPUT
 				NewProjectSM.setAttribute("type", "text");
 				NewProjectSM.setAttribute("class", "Input");
 				NewProjectSM.setAttribute("name", "PSM");
 				NewProjectSM.setAttribute("placeholder", "Scrum Master");	
 				NewProjectSM.setAttribute("maxlength", "100");
+				NewProjectSM.setAttribute("autocomplete", "off");
 			// PROJECT DESCRIPTION INPUT
 				NewProjectDescription.setAttribute("type", "textarea");
 				NewProjectDescription.setAttribute("class", "Input");
 				NewProjectDescription.setAttribute("name", "PDescription");
 				NewProjectDescription.setAttribute("placeholder", "Description");
 				NewProjectDescription.setAttribute("maxlength", "256");
-				NewProjectDescription.style.width = "75%";	
+				NewProjectDescription.setAttribute("autocomplete", "off");
+				NewProjectDescription.style.width = "75%";
 			// PROJECT ADD BUTTON
 				NewProjectAdd.setAttribute("id", "NewProjectAddButton");
-				NewProjectAdd.setAttribute("type", "submit");
-				//NewProjectAdd.innerHTML = "Crear Proyecto";
+				NewProjectAdd.innerHTML = "Crear Proyecto";
+			// BACK TO USER PANEL
+				NewProjectBack.setAttribute("id", "NewProjectBack");
+				NewProjectBack.setAttribute("onclick", "backFromNewP()");
+				NewProjectBack.innerHTML = "Volver Atrás";
 		// APPEND
 			NewProjectDiv.appendChild(NewProjectTitle);
 
@@ -188,15 +200,35 @@ function createProjectButton() {
 			NewProjectForm.appendChild(NewProjectBR);
 			NewProjectForm.appendChild(NewProjectDescription);
 			NewProjectForm.appendChild(NewProjectAdd);
+			NewProjectForm.appendChild(NewProjectBR);
+			NewProjectForm.appendChild(NewProjectBack);
 
 			NewProjectDiv.appendChild(NewProjectForm);
 			document.body.lastElementChild.appendChild(NewProjectDiv);
 	}
 
 function validateNewProject() {
-	if (document.getElementsByClassName("Input")[0].value == "X") {
-		return true
-	} else {
-		return false;
+	var Inputs = document.getElementsByClassName("Input");
+	var CounterEmpty = 0;
+	for (var i = 0; i < Inputs.length; i++) {
+		Inputs[i].style.border = 'solid 3px black';
+		Inputs[i].style.boxShadow = null;
+		if (Inputs[i].value == "") {
+			Inputs[i].style.border = 'solid 3px red';
+			Inputs[i].style.boxShadow = '0px 0px 10px 5px #888888';
+			CounterEmpty ++;
+		}
 	}
+
+	if (CounterEmpty > 0) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function backFromNewP() {
+	document.getElementById("NewProjectDiv").remove();
+	document.getElementsByClassName("NewProjectButton")[0].remove();
+	createProjectButton();
 }
