@@ -1,13 +1,5 @@
 <?php
-  try {
-    $BD_User = 'scrum';
-    $Password = 'P@ssw0rd';
-    $PDO = new PDO ("mysql:host=localhost;dbname=BD_Scrum","$BD_User","$Password");
-  } catch (PDOException $e) {
-    echo "Failed to get db handler : ".$e->getMessage()."\n";
-  }
-?>
-<?php
+  include 'PHPFunctions.php';
   $Checked = null;
   if (!empty($_POST)) {
     $Mail = $_POST['Mail'];
@@ -19,7 +11,7 @@
       $UserData= $Query->fetch();
       $Body = " No responder a este correo.\n
       Link de Recuperación: \n
-      https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/pasword.php?user=".$UserData['ID_Usuario'];
+      https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/Password.php?user=".$UserData['ID_Usuario'];
       echo $Body;
       $Title = "Resetear contraseña";
       $Headers = "From: NoReply@GestorScrum.com";
@@ -44,7 +36,7 @@
     <?php
       if ($Checked != Null){
         echo $Checked;
-      } 
+      }
     ?>
   </body>
 </html>
