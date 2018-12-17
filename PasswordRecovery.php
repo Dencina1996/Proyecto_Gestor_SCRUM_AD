@@ -2,6 +2,7 @@
   include 'PHPFunctions.php';
   $Checked = null;
   if (!empty($_POST)) {
+    $PDO = Connect();
     $Mail = $_POST['Mail'];
     $Query = $PDO->prepare("SELECT ID_Usuario, Correo_Usuario from Usuarios where Correo_Usuario='$Mail'");
     $Query->execute();
@@ -11,7 +12,7 @@
       $UserData= $Query->fetch();
       $Body = " No responder a este correo.\n
       Link de Recuperación: \n
-      https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/Password.php?user=".$UserData['ID_Usuario'];
+      https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/Password.php?User=".$UserData['ID_Usuario'];
       echo $Body;
       $Title = "Resetear contraseña";
       $Headers = "From: NoReply@GestorScrum.com";
