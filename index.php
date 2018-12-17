@@ -5,6 +5,7 @@
 	<title>Bienvenid@ - Scrum AD</title>
 	<link rel="stylesheet" type="text/css" href="CSS/Index_CSS/Styles.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<link rel="icon" type="image/png" href="CSS/Logo.png">
 	<script type="text/javascript" src="JS/Scripts.js"></script>
 </head>
 <body>
