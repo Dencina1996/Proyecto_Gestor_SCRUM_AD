@@ -76,7 +76,6 @@ function showProjectInfo(element) {
 	}
 }
 
-
 // FUNCTION FOR PRIVILEGES
 
 function allowedOperations() {
@@ -151,6 +150,7 @@ function createProjectButton() {
 				NewProjectInitDate.setAttribute("placeholder", "Fecha de Inicio (Año/Mes/Día)");
 				NewProjectInitDate.setAttribute("onmouseover", "(this.type='date')");
 				NewProjectInitDate.setAttribute("onmouseout", "(this.type='text')");
+				NewProjectInitDate.setAttribute("maxlength", "0");
 				NewProjectInitDate.setAttribute("autocomplete", "off");
 			// PROJECT FINAL DATE INPUT
 				NewProjectFinalDate.setAttribute("type", "text");
@@ -159,6 +159,7 @@ function createProjectButton() {
 				NewProjectFinalDate.setAttribute("placeholder", "Fecha de Fin (Año/Mes/Día)");
 				NewProjectFinalDate.setAttribute("onmouseover", "(this.type='date')");
 				NewProjectFinalDate.setAttribute("onmouseout", "(this.type='text')");
+				NewProjectFinalDate.setAttribute("maxlength", "0");
 				NewProjectFinalDate.setAttribute("autocomplete", "off");
 			// PROJECT PRODUCT OWNER INPUT
 				NewProjectPO.setAttribute("type", "text");
