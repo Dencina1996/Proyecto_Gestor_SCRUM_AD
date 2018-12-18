@@ -12,15 +12,15 @@
 include 'PHPFunctions.php';
 $User;
 if(!empty($_GET)){
-  $USER =  $_GET['user'];
+  $USER =  $_GET['User'];
   //echo $USER;
   if(!empty($_POST)){
     //echo "Tu nueva contraseña es :".$_POST['password'];
-    $Password = $_POST['password'];
+    $Password = $_POST['Password'];
     $PDO=Connect();
     $QUERY = $PDO->prepare("UPDATE Usuarios SET Password_Usuario = SHA2('$Password',512) WHERE ID_Usuario = $USER");
     $QUERY->execute();
-    $Checked=$query->rowcount();
+    $Checked=$QUERY->rowcount();
     //echo $Checked;
     if($Checked != 0){
       echo "<p>Contraseña Restablecida con exito</p>";
@@ -44,6 +44,7 @@ if(!empty($_GET)){
         <input type="password" class="input-field" name="Password" placeholder="Repetir Nueva Contraseña" required>
       </div>
         <button id="Entrar" type="submit" name="button">Actualizar Contraseña</button>
+    </div>
     </form>
     
   </body>

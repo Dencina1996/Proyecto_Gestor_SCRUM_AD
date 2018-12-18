@@ -23,7 +23,7 @@
       $UserData= $Query->fetch();
       $Body = " No responder a este correo.\n
       Link de Recuperación: \n
-      https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/Password.php?user=".$UserData['ID_Usuario'];
+      https://www.nilarrus.tk/Proyecto_Gestor_SCRUM_AD/Password.php?User=".$UserData['ID_Usuario'];
       //echo $Body;
       $Title = "Resetear Contraseña";
       $Headers = "From: NoReply@GestorScrum.com";
