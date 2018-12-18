@@ -5,6 +5,7 @@
 	<title>Bienvenid@ - Scrum AD</title>
 	<link rel="stylesheet" type="text/css" href="CSS/Index_CSS/Styles.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<link rel="stylesheet" type="text/css" href="CSS/Cursors.css">
 	<link rel="icon" type="image/png" href="CSS/Logo.png">
 	<script type="text/javascript" src="JS/Scripts.js"></script>
 </head>
@@ -22,7 +23,7 @@
 				<input class="input-field" type="password" name="InputPassword" placeholder="Contraseña" onclick="changeColor(this)">
 			</div>
 			<button id="Entrar">Entrar</button>
-			<a href="PasswordRecovery.php">Recuperar Contraseña</a>
+			<a href="PasswordRecovery.php" style="text-decoration: none; font-weight: bold; text-align: center; align-content: center;">¿Olvidaste la contraseña?</a>
 		</div>
 	</form>
 </body>
