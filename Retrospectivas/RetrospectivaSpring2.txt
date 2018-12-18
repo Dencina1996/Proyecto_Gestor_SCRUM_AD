@@ -1,0 +1,5 @@
+David Encina/Nil Garcia
+-¿Que a ido mal?
+  -No hemos acordado una sintaxis y hemos corregido el codigo al final.
+-¿Que podemos mejorar?
+  -Acordar una sintaxis del codigo des del principio y no tener que corregir el codigo al final.
