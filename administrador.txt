@@ -1,0 +1,5 @@
+1 tipo user Admin 
+2 pantalla user directa
+3 llistat de usuaris
+        -Pot canviar valors no unics de la bbdd incloen el tipos de usuari.
+        -entre altres coses

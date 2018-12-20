@@ -19,6 +19,6 @@
 	if($Result == 1){
 		header("Location: UserPanel.php");
 	} else {
-		header("Location: Index.php");
+		header("Location: index.php");
 	}
 ?>
