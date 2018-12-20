@@ -3,13 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
-<<<<<<< HEAD
--- Tiempo de generación: 14-12-2018 a las 16:54:07
-=======
--- Tiempo de generación: 14-12-2018 a las 19:17:59
->>>>>>> c195822c3f023a50d02e4b90cb9c06fc2ab8d31b
--- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
+-- Temps de generació: 18-12-2018 a les 16:26:59
+-- Versió del servidor: 5.7.24-0ubuntu0.18.04.1
+-- Versió de PHP: 7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -25,11 +21,10 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `BD_Scrum` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `BD_Scrum`;
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Especificaciones`
+-- Estructura de la taula `Especificaciones`
 --
 
 CREATE TABLE `Especificaciones` (
@@ -42,10 +37,10 @@ CREATE TABLE `Especificaciones` (
   `Duracion_Especificacion` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Dificultad_Especificacion` varchar(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Estado_Especificacion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Especificaciones`
+-- Bolcant dades de la taula `Especificaciones`
 --
 
 INSERT INTO `Especificaciones` (`ID_Especificacion`, `Nombre_Especificacion`, `ID_Proyecto`, `ID_Usuario`, `ID_Sprint`, `Descripcion_Especificacion`, `Duracion_Especificacion`, `Dificultad_Especificacion`, `Estado_Especificacion`) VALUES
@@ -54,17 +49,17 @@ INSERT INTO `Especificaciones` (`ID_Especificacion`, `Nombre_Especificacion`, `I
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Grupos`
+-- Estructura de la taula `Grupos`
 --
 
 CREATE TABLE `Grupos` (
   `ID_Grupo` int(11) NOT NULL,
   `Nombre_Grupo` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `ID_Proyecto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Grupos`
+-- Bolcant dades de la taula `Grupos`
 --
 
 INSERT INTO `Grupos` (`ID_Grupo`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
@@ -73,7 +68,7 @@ INSERT INTO `Grupos` (`ID_Grupo`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Proyectos`
+-- Estructura de la taula `Proyectos`
 --
 
 CREATE TABLE `Proyectos` (
@@ -82,24 +77,23 @@ CREATE TABLE `Proyectos` (
   `Fecha_Inicio_Proyecto` date NOT NULL,
   `Fecha_Final_Proyecto` date NOT NULL,
   `Descripcion_Proyecto` varchar(256) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `PO_Proyecto` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `SM_Proyecto` varchar(100) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `PO_Proyecto` varchar(100) NOT NULL,
+  `SM_Proyecto` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Proyectos`
+-- Bolcant dades de la taula `Proyectos`
 --
 
 INSERT INTO `Proyectos` (`ID_Proyecto`, `Nombre_Proyecto`, `Fecha_Inicio_Proyecto`, `Fecha_Final_Proyecto`, `Descripcion_Proyecto`, `PO_Proyecto`, `SM_Proyecto`) VALUES
 (1, 'Proyecto YLW TPV', '2018-11-29', '2018-11-30', 'Aplicación TPV con control de usuarios y terminal de venta', 'Enric Mieza', 'Leandro Zabala'),
 (2, 'Proyecto Gestor SCRUM', '2018-12-03', '2018-12-20', 'Aplicación Web para la gestión de proyectos mediante la metodología de SCRUM', 'Enric Mieza', 'Leandro Zabala'),
-(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP', 'Enric Mieza', 'Leandro Zabala'),
-(5, 'Proyecto Oauth2', '2018-12-14', '2019-04-10', 'Implementación del procolo Oauth2 (Google) para el formulario de Login', 'Enric Mieza', 'Leandro Zabala');
+(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP', 'Enric Mieza', 'Leandro Zabala');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Sprints`
+-- Estructura de la taula `Sprints`
 --
 
 CREATE TABLE `Sprints` (
@@ -110,10 +104,10 @@ CREATE TABLE `Sprints` (
   `Fecha_Final_Sprint` date NOT NULL,
   `Duracion_Sprint` int(11) NOT NULL,
   `Estado_Sprint` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Sprints`
+-- Bolcant dades de la taula `Sprints`
 --
 
 INSERT INTO `Sprints` (`ID_Sprint`, `Nombre_Sprint`, `ID_Proyecto`, `Fecha_Inicio_Sprint`, `Fecha_Final_Sprint`, `Duracion_Sprint`, `Estado_Sprint`) VALUES
@@ -122,34 +116,36 @@ INSERT INTO `Sprints` (`ID_Sprint`, `Nombre_Sprint`, `ID_Proyecto`, `Fecha_Inici
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Usuarios`
+-- Estructura de la taula `Usuarios`
 --
 
 CREATE TABLE `Usuarios` (
   `ID_Usuario` int(11) NOT NULL,
+  `Correo_Usuario` varchar(100) NOT NULL,
   `Nombre_Usuario` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Nombre_Apellidos` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `Nombre_Apellidos` varchar(100) NOT NULL,
   `Password_Usuario` varchar(512) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Perfil_Usuario` varchar(3) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `ID_Grupo` int(11) NOT NULL,
-  `Correo_Usuario` varchar(100) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `ID_Grupo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Usuarios`
+-- Bolcant dades de la taula `Usuarios`
 --
 
-INSERT INTO `Usuarios` (`ID_Usuario`, `Nombre_Usuario`, `Nombre_Apellidos`, `Password_Usuario`, `Perfil_Usuario`, `ID_Grupo`, `Correo_Usuario`) VALUES
-(1, 'Master', 'Leandro Zabala', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'SM', 1, 'Master@scrum.com'),
-(2, 'Owner', 'Enric Mieza', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'PO', 1, 'ProductOwner@scrum.com'),
-(3, 'Developer', 'David Encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1, 'Developer@scrum.com');
+INSERT INTO `Usuarios` (`ID_Usuario`, `Correo_Usuario`, `Nombre_Usuario`, `Nombre_Apellidos`, `Password_Usuario`, `Perfil_Usuario`, `ID_Grupo`) VALUES
+(1, 'Master@scrum.com', 'Master', 'Leandro Zabala', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'SM', 1),
+(2, 'ProductOwner@scrum.com', 'Owner', 'Enric Mieza', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'PO', 1),
+(3, 'Developer@scrum.com', 'Developer', 'David Encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1),
+(4, 'ngarciadelshorts@gmail.com', 'Nil', 'Nil Garcia', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 'D', 1),
+(5, 'dencinamartinez@iesesteveterradas.cat', 'dencina', 'david encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1);
 
 --
--- Índices para tablas volcadas
+-- Indexos per taules bolcades
 --
 
 --
--- Indices de la tabla `Especificaciones`
+-- Index de la taula `Especificaciones`
 --
 ALTER TABLE `Especificaciones`
   ADD PRIMARY KEY (`ID_Especificacion`),
@@ -158,67 +154,67 @@ ALTER TABLE `Especificaciones`
   ADD KEY `ID_Sprint` (`ID_Sprint`);
 
 --
--- Indices de la tabla `Grupos`
+-- Index de la taula `Grupos`
 --
 ALTER TABLE `Grupos`
   ADD PRIMARY KEY (`ID_Grupo`),
   ADD KEY `ID_Proyecto` (`ID_Proyecto`);
 
 --
--- Indices de la tabla `Proyectos`
+-- Index de la taula `Proyectos`
 --
 ALTER TABLE `Proyectos`
   ADD PRIMARY KEY (`ID_Proyecto`);
 
 --
--- Indices de la tabla `Sprints`
+-- Index de la taula `Sprints`
 --
 ALTER TABLE `Sprints`
   ADD PRIMARY KEY (`ID_Sprint`),
   ADD KEY `ID_Proyecto` (`ID_Proyecto`);
 
 --
--- Indices de la tabla `Usuarios`
+-- Index de la taula `Usuarios`
 --
 ALTER TABLE `Usuarios`
   ADD PRIMARY KEY (`ID_Usuario`),
   ADD KEY `ID_Grupo` (`ID_Grupo`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT per les taules bolcades
 --
 
 --
--- AUTO_INCREMENT de la tabla `Especificaciones`
+-- AUTO_INCREMENT per la taula `Especificaciones`
 --
 ALTER TABLE `Especificaciones`
   MODIFY `ID_Especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `Grupos`
+-- AUTO_INCREMENT per la taula `Grupos`
 --
 ALTER TABLE `Grupos`
   MODIFY `ID_Grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `Proyectos`
+-- AUTO_INCREMENT per la taula `Proyectos`
 --
 ALTER TABLE `Proyectos`
-  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `Sprints`
+-- AUTO_INCREMENT per la taula `Sprints`
 --
 ALTER TABLE `Sprints`
   MODIFY `ID_Sprint` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `Usuarios`
+-- AUTO_INCREMENT per la taula `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- Restricciones para tablas volcadas
+-- Restriccions per taules bolcades
 --
 
 --
--- Filtros para la tabla `Especificaciones`
+-- Restriccions per la taula `Especificaciones`
 --
 ALTER TABLE `Especificaciones`
   ADD CONSTRAINT `Especificaciones_ibfk_1` FOREIGN KEY (`ID_Usuario`) REFERENCES `Usuarios` (`ID_Usuario`),
@@ -226,20 +222,23 @@ ALTER TABLE `Especificaciones`
   ADD CONSTRAINT `Especificaciones_ibfk_3` FOREIGN KEY (`ID_Proyecto`) REFERENCES `Proyectos` (`ID_Proyecto`);
 
 --
--- Filtros para la tabla `Grupos`
+-- Restriccions per la taula `Grupos`
 --
 ALTER TABLE `Grupos`
   ADD CONSTRAINT `Grupos_ibfk_1` FOREIGN KEY (`ID_Proyecto`) REFERENCES `Proyectos` (`ID_Proyecto`);
 
 --
--- Filtros para la tabla `Sprints`
+-- Restriccions per la taula `Sprints`
 --
 ALTER TABLE `Sprints`
   ADD CONSTRAINT `Sprints_ibfk_1` FOREIGN KEY (`ID_Proyecto`) REFERENCES `Proyectos` (`ID_Proyecto`);
 
 --
--- Filtros para la tabla `Usuarios`
+-- Restriccions per la taula `Usuarios`
 --
 ALTER TABLE `Usuarios`
   ADD CONSTRAINT `Usuarios_ibfk_1` FOREIGN KEY (`ID_Grupo`) REFERENCES `Grupos` (`ID_Grupo`);
 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
