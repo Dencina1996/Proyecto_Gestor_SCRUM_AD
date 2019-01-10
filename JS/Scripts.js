@@ -26,7 +26,7 @@ function deleteError() {
 	}
 }
 
-// FUNCTION CHECK EMPTY FIELDS 
+// FUNCTION CHECK EMPTY FIELDS
 
 function validarLogin() {
 	var User = document.getElementsByName("InputUser")[0].value;
@@ -57,7 +57,7 @@ function validarLogin() {
 }
 
 // FUNCTION FOR LOGIN FORM
- 
+
 function changeColor(element) {
 	var Icons = document.getElementById("ContainerDiv").querySelectorAll("i");
 	var i;
@@ -80,7 +80,7 @@ function showProjectInfo(element) {
 
 function allowedOperations() {
 	var Profile = document.getElementsByTagName("Profile")[0].id;
-	
+
 	if (Profile == 'SM') {
 		createProjectButton();
 	}
@@ -172,7 +172,7 @@ function createProjectButton() {
 				NewProjectSM.setAttribute("type", "text");
 				NewProjectSM.setAttribute("class", "Input");
 				NewProjectSM.setAttribute("name", "PSM");
-				NewProjectSM.setAttribute("placeholder", "Scrum Master");	
+				NewProjectSM.setAttribute("placeholder", "Scrum Master");
 				NewProjectSM.setAttribute("maxlength", "100");
 				NewProjectSM.setAttribute("autocomplete", "off");
 			// PROJECT DESCRIPTION INPUT
