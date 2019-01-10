@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Temps de generació: 18-12-2018 a les 16:26:59
+-- Temps de generació: 10-01-2019 a les 16:48:39
 -- Versió del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versió de PHP: 7.2.10-0ubuntu0.18.04.1
 
@@ -17,10 +17,9 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `BD_Scrum`
+-- Base de dades: `BD_Scrum`
 --
-CREATE DATABASE IF NOT EXISTS `BD_Scrum` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `BD_Scrum`;
+
 -- --------------------------------------------------------
 
 --
@@ -88,7 +87,8 @@ CREATE TABLE `Proyectos` (
 INSERT INTO `Proyectos` (`ID_Proyecto`, `Nombre_Proyecto`, `Fecha_Inicio_Proyecto`, `Fecha_Final_Proyecto`, `Descripcion_Proyecto`, `PO_Proyecto`, `SM_Proyecto`) VALUES
 (1, 'Proyecto YLW TPV', '2018-11-29', '2018-11-30', 'Aplicación TPV con control de usuarios y terminal de venta', 'Enric Mieza', 'Leandro Zabala'),
 (2, 'Proyecto Gestor SCRUM', '2018-12-03', '2018-12-20', 'Aplicación Web para la gestión de proyectos mediante la metodología de SCRUM', 'Enric Mieza', 'Leandro Zabala'),
-(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP', 'Enric Mieza', 'Leandro Zabala');
+(3, 'Proyecto SMSend', '2018-12-11', '2018-12-17', 'Aplicación para el envío de SMS a gran escala mediante PHP', 'Enric Mieza', 'Leandro Zabala'),
+(4, 'Prueba XD', '2018-12-28', '2018-12-31', 'LALALALALA', 'Enric Mieza', 'Leandro Zabala');
 
 -- --------------------------------------------------------
 
@@ -137,8 +137,9 @@ INSERT INTO `Usuarios` (`ID_Usuario`, `Correo_Usuario`, `Nombre_Usuario`, `Nombr
 (1, 'Master@scrum.com', 'Master', 'Leandro Zabala', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'SM', 1),
 (2, 'ProductOwner@scrum.com', 'Owner', 'Enric Mieza', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'PO', 1),
 (3, 'Developer@scrum.com', 'Developer', 'David Encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1),
-(4, 'ngarciadelshorts@gmail.com', 'Nil', 'Nil Garcia', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 'D', 1),
-(5, 'dencinamartinez@iesesteveterradas.cat', 'dencina', 'david encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1);
+(4, 'ngarciadelshorts@gmail.com', 'Nil', 'Nil Garcia', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1),
+(5, 'dencinamartinez@iesesteveterradas.cat', 'dencina', 'david encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1),
+(6, 'jsort45@gmail.com', 'pop', 'Pep sort', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1);
 
 --
 -- Indexos per taules bolcades
@@ -198,7 +199,7 @@ ALTER TABLE `Grupos`
 -- AUTO_INCREMENT per la taula `Proyectos`
 --
 ALTER TABLE `Proyectos`
-  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT per la taula `Sprints`
 --
@@ -208,7 +209,7 @@ ALTER TABLE `Sprints`
 -- AUTO_INCREMENT per la taula `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Restriccions per taules bolcades
 --
