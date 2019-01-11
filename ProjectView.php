@@ -10,9 +10,10 @@
     <link rel="icon" type="image/png" href="CSS/Logo.png">
     <script type="text/javascript" src="JS/Scripts.js"></script>
   </head>
-  <body onload="allowedOperations(), hidePreviousProjects()">
+  <body>
     <header>
       <?php
+        $ProjectID = $_POST['PDI'];
         session_start();
         echo "<div class='Logo'>Gestor Scrum</div>";
         echo "<nav>";
@@ -24,26 +25,49 @@
             echo "</li>";
           echo "</ul>";
         echo "</nav>";
+      echo "<script>alert($ProjectID);</script>";
       ?>
+    
     </header>
 
     <!-- GET USER'S PROFILE TYPE (HIDDEN) -->
 
     <?php
+     
       $Connection = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
       $Connection->set_charset("utf8");
-      $Query = "SELECT Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario = '".$_SESSION['InputUser']."'";
-      $Result = $Connection->query($Query);
-      $UP;
-      while ($Row = $Result->fetch_assoc()) {
-        $UP = $Row["Perfil_Usuario"];
-        echo "<Profile hidden id='".$UP."'></Profile>";
+      if (mysqli_connect_errno()) {
+        printf("Falló la conexión: %s\n", Connection_connect_error());
+        exit();
       }
+      $Query = "SELECT P.* FROM Proyectos P, Grupos G, Usuarios U 
+      WHERE P.ID_Proyecto = G.ID_Proyecto AND P.ID_Proyecto = '".$ProjectID."' AND U.ID_Grupo = G.ID_Grupo
+      AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';"; 
+      var_dump($ProjectID);
+      echo '<div class="GlobalContainer">';
+      echo '<h5 class="GlobalContainerName">Proyectos</h5>';
+      if ($Result = $Connection->query($Query)) {
+        while ($Row = $Result->fetch_row()) {
+          
+          echo "<a><div class='LocalContainer'>";
+          echo "<h1 class='ProjectTitle'>$Row[1]</h1>";
+          echo "<br>";
+          echo "<p class='ProjectDesc'><b>$Row[4]</b></p>";
+          echo "<br>";
+          echo "<p class='ProjectInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
+          echo "<p class='ProjectInfo'><b>Fecha de Finalización (Prevista):</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
+          echo "<p class='ProjectInfo'><b>Product Owner:</b> $Row[5]</p>";
+          echo "<p class='ProjectInfo'><b>Scrum Master:</b> $Row[6]</p>"; 
+          
+          echo "</div><a>";
+          echo "rabo";
+        }
+      $Result->close();
+      }
+      $Connection->close();
+      echo "</div>";
     ?>
-    Projects View
-    <?php
-      $DUMP = $_POST['PDI'];
-      echo $DUMP;
-    ?>
+
+    
   </body>
 </html>
