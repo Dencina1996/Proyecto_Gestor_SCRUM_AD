@@ -27,28 +27,28 @@
         echo "</nav>";
       echo "<script>alert($ProjectID);</script>";
       ?>
-    
+
     </header>
 
     <!-- GET USER'S PROFILE TYPE (HIDDEN) -->
 
     <?php
-     
-      $Connection = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
-      $Connection->set_charset("utf8");
-      if (mysqli_connect_errno()) {
-        printf("Falló la conexión: %s\n", Connection_connect_error());
-        exit();
-      }
-      $Query = "SELECT P.* FROM Proyectos P, Grupos G, Usuarios U 
-      WHERE P.ID_Proyecto = G.ID_Proyecto AND P.ID_Proyecto = '".$ProjectID."' AND U.ID_Grupo = G.ID_Grupo
-      AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';"; 
+
+      $BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
+      $Query = $BBDD->prepare("SELECT P.* FROM Proyectos P WHERE P.ID_Proyecto = :InputProject;");
+      $Query -> bindValue(":InputProject",$ProjectID);
+      //$Query -> bindValue(":InputUser",$_SESSION['InputUser']);
+      //$_SESSION['InputUser']
       var_dump($ProjectID);
       echo '<div class="GlobalContainer">';
       echo '<h5 class="GlobalContainerName">Proyectos</h5>';
-      if ($Result = $Connection->query($Query)) {
+      $Query->execute();
+      $Con =$Query ->rowCount();
+      var_dump($Con);
+      /*if ($Result = $Connection->query($Query)) {
+
         while ($Row = $Result->fetch_row()) {
-          
+
           echo "<a><div class='LocalContainer'>";
           echo "<h1 class='ProjectTitle'>$Row[1]</h1>";
           echo "<br>";
@@ -57,17 +57,17 @@
           echo "<p class='ProjectInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
           echo "<p class='ProjectInfo'><b>Fecha de Finalización (Prevista):</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
           echo "<p class='ProjectInfo'><b>Product Owner:</b> $Row[5]</p>";
-          echo "<p class='ProjectInfo'><b>Scrum Master:</b> $Row[6]</p>"; 
-          
+          echo "<p class='ProjectInfo'><b>Scrum Master:</b> $Row[6]</p>";
+
           echo "</div><a>";
           echo "rabo";
         }
-      $Result->close();
-      }
+      $Con->close();
+    }*/
       $Connection->close();
       echo "</div>";
     ?>
 
-    
+
   </body>
 </html>
