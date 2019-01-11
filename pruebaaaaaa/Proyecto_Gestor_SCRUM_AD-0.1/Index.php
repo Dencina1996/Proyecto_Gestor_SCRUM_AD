@@ -5,24 +5,22 @@
 	<title>Bienvenid@ - Scrum AD</title>
 	<link rel="stylesheet" type="text/css" href="CSS/Index_CSS/Styles.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-	<link rel="stylesheet" type="text/css" href="CSS/Cursors.css">
 	<script type="text/javascript" src="JS/Scripts.js"></script>
 </head>
-<body onkeydown="CheckInput()">
+<body>
 	<form action="Access.php" onsubmit="return validarLogin();" method="POST">
 		<div id="ContainerDiv">
 			<img id="ProjectLogo" src="CSS/Logo.png">
 			<br><br>
 			<div class="input-container">
 				<i class="fa fa-user icon"></i>
-				<input class="input-field" type="text" name="InputUser" placeholder="Usuario" autofocus onclick="changeColor(this)">
+				<input class="input-field" type="text" name="InputUser" placeholder="Usuario" autofocus>
 			</div>
 			<div class="input-container">
 				<i class="fa fa-key icon"></i>
-				<input class="input-field" type="password" name="InputPassword" placeholder="Contraseña" onclick="changeColor(this)">
+				<input class="input-field" type="password" name="InputPassword" placeholder="Contraseña">
 			</div>
 			<button id="Entrar">Entrar</button>
-			<a href="PasswordRecovery.php" style="text-decoration: none; font-weight: bold; text-align: center; align-content: center;">¿Olvidaste la contraseña?</a>
 		</div>
 	</form>
 </body>

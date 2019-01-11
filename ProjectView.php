@@ -41,5 +41,9 @@
       }
     ?>
     Projects View
+    <?php
+      $DUMP = $_POST['PDI'];
+      echo $DUMP;
+    ?>
   </body>
 </html>

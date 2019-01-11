@@ -58,22 +58,44 @@ function validarLogin() {
 
 // FUNCTION FOR LOGIN FORM
  
-function changeColor(element) {
+/*function changeColor(element) {
 	var Icons = document.getElementById("ContainerDiv").querySelectorAll("i");
 	var i;
 	for (i = 0; i < Icons.length; i++) {
 		Icons[i].style.backgroundColor = 'white';
 	}
 	element.previousElementSibling.style.background = 'red';
-}
+}*/
 
 // FUNCTION FOR SHOWING PROJECT ATTRIBUTES
 
-function showProjectInfo(element) {
-	var Tags = element.getElementsByClassName("ProjectInfo");
-	for (var i = 0; i <= Tags.length; i++) {
-		Tags[i].hidden = false;
-	}
+function getProjectInfo(id) {
+	var ID = id;
+	//document.getElementById("ProjectInfo").innerHTML;
+
+	// CREATION OF FORM
+		//alert(ID);
+
+		var IDForm = document.createElement("form");
+		
+		IDForm.setAttribute("action", "ProjectView.php");
+		IDForm.setAttribute("id", "FormID");
+		IDForm.setAttribute("method", "POST");
+
+		// P FOR PEACE
+
+			var PID = document.createElement("input");
+			PID.setAttribute("type", "text")
+			PID.setAttribute("hidden", true);
+			PID.setAttribute("name", "PDI");
+			PID.setAttribute('value', ID);
+			
+			document.getElementsByClassName("PDI").innerHTML == ID;	
+
+		IDForm.appendChild(PID);
+		document.body.appendChild(IDForm);
+		
+		document.getElementById("FormID").submit();		
 }
 
 // FUNCTION FOR PRIVILEGES
@@ -232,4 +254,24 @@ function backFromNewP() {
 	document.getElementById("NewProjectDiv").remove();
 	document.getElementsByClassName("NewProjectButton")[0].remove();
 	createProjectButton();
+}
+
+function CheckInput() {
+	setInterval(CheckInputX(),100);
+}
+
+function CheckInputX() {
+	var I1 = document.getElementsByClassName("input-field")[0];
+	var I2 = document.getElementsByClassName("input-field")[1];
+
+	if (I1.value == null || I1.value == "") {
+		I1.previousElementSibling.style.backgroundColor = 'red';
+	} else {
+		I1.previousElementSibling.style.backgroundColor = 'green';
+	}
+	if (I2.value == null || I2.value == "") {
+		I2.previousElementSibling.style.backgroundColor = 'red';
+	} else {
+		I2.previousElementSibling.style.backgroundColor = 'green';
+	}	
 }
