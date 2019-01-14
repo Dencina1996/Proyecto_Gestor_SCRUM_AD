@@ -54,8 +54,8 @@
       if ($UP == "SM") {
         $Query = "SELECT * FROM Proyectos";
       } elseif ($UP != "SM") {
-        $Query = "SELECT P.* FROM Proyectos P, Grupos G, Usuarios U 
-        WHERE P.ID_Proyecto = G.ID_Proyecto AND U.ID_Grupo = G.ID_Grupo AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';"; 
+        $Query = "SELECT P.* FROM Proyectos P, Grupos G, Usuarios U
+        WHERE P.ID_Proyecto = G.ID_Proyecto AND U.ID_Grupo = G.ID_Grupo AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';";
       }
       echo '<div class="GlobalContainer">';
       echo '<h5 class="GlobalContainerName">Proyectos</h5>';
@@ -69,8 +69,8 @@
           echo "<p class='ProjectInfo' hidden><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
           echo "<p class='ProjectInfo' hidden><b>Fecha de Finalización (Prevista):</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
           echo "<p class='ProjectInfo' hidden><b>Product Owner:</b> $Row[5]</p>";
-          echo "<p class='ProjectInfo' hidden><b>Scrum Master:</b> $Row[6]</p>"; 
-          
+          echo "<p class='ProjectInfo' hidden><b>Scrum Master:</b> $Row[6]</p>";
+
           echo "</div><a>";
         }
       $Result->close();

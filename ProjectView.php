@@ -25,7 +25,6 @@
             echo "</li>";
           echo "</ul>";
         echo "</nav>";
-      echo "<script>alert($ProjectID);</script>";
       ?>
 
     </header>
@@ -33,22 +32,17 @@
     <!-- GET USER'S PROFILE TYPE (HIDDEN) -->
 
     <?php
-
       $BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
+      $BBDD->exec('SET NAMES utf8');
       $Query = $BBDD->prepare("SELECT P.* FROM Proyectos P WHERE P.ID_Proyecto = :InputProject;");
-      $Query -> bindValue(":InputProject",$ProjectID);
-      //$Query -> bindValue(":InputUser",$_SESSION['InputUser']);
-      //$_SESSION['InputUser']
-      var_dump($ProjectID);
+      $Query->bindValue(":InputProject",$ProjectID);
       echo '<div class="GlobalContainer">';
-      echo '<h5 class="GlobalContainerName">Proyectos</h5>';
+      echo '<h5 class="GlobalContainerName">Proyecto</h5>';
       $Query->execute();
-      $Con =$Query ->rowCount();
-      var_dump($Con);
-      /*if ($Result = $Connection->query($Query)) {
-
-        while ($Row = $Result->fetch_row()) {
-
+      $Res = $Query->rowCount();
+      //var_dump($Con);
+      if ($Res!=0) {
+        while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
           echo "<a><div class='LocalContainer'>";
           echo "<h1 class='ProjectTitle'>$Row[1]</h1>";
           echo "<br>";
@@ -60,14 +54,9 @@
           echo "<p class='ProjectInfo'><b>Scrum Master:</b> $Row[6]</p>";
 
           echo "</div><a>";
-          echo "rabo";
         }
-      $Con->close();
-    }*/
-      $Connection->close();
+    }
       echo "</div>";
     ?>
-
-
   </body>
 </html>
