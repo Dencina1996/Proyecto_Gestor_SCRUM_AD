@@ -279,3 +279,10 @@ function CheckInputX() {
 		I2.previousElementSibling.style.backgroundColor = 'green';
 	}	
 }
+
+function CheckSprintStatus(sprint) {
+	var Sprints = document.getElementsByName("Status");
+	if (Sprints == "Acabado") {
+		alert("nabo");
+	}
+}
