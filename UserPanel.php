@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="CSS/Logo.png">
     <script type="text/javascript" src="JS/Scripts.js"></script>
   </head>
-  <body onload="allowedOperations(), hidePreviousProjects()">
+  <body onload="allowedOperations()">
     <header>
       <?php
         session_start();
@@ -61,15 +61,16 @@
       echo '<h5 class="GlobalContainerName">Proyectos</h5>';
       if ($Result = $Connection->query($Query)) {
         while ($Row = $Result->fetch_row()) {
-          echo "<a><div class='LocalContainer' onclick='showProjectInfo(this)'>";
+          echo "<a onclick='getProjectInfo($Row[0])'><div class='LocalContainer'>";
           echo "<h1 class='ProjectTitle'>$Row[1]</h1>";
           echo "<br>";
           echo "<p class='ProjectDesc'><b>$Row[4]</b></p>";
           echo "<br>";
-          echo "<p class='ProjectInfo' hidden>    <b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
-          echo "<p class='ProjectInfo' hidden>    <b>Fecha de Finalización (Prevista):</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
-          echo "<p class='ProjectInfo' hidden>    <b>Product Owner:</b> $Row[5]</p>";
-          echo "<p class='ProjectInfo' hidden>    <b>Scrum Master:</b> $Row[6]</p>";
+          echo "<p class='ProjectInfo' hidden><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
+          echo "<p class='ProjectInfo' hidden><b>Fecha de Finalización (Prevista):</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
+          echo "<p class='ProjectInfo' hidden><b>Product Owner:</b> $Row[5]</p>";
+          echo "<p class='ProjectInfo' hidden><b>Scrum Master:</b> $Row[6]</p>"; 
+          
           echo "</div><a>";
         }
       $Result->close();

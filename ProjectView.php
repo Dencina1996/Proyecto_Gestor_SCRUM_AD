@@ -10,9 +10,10 @@
     <link rel="icon" type="image/png" href="CSS/Logo.png">
     <script type="text/javascript" src="JS/Scripts.js"></script>
   </head>
-  <body onload="allowedOperations(), hidePreviousProjects()">
+  <body>
     <header>
       <?php
+        $ProjectID = $_POST['PDI'];
         session_start();
         echo "<div class='Logo'>Gestor Scrum</div>";
         echo "<nav>";
@@ -24,22 +25,49 @@
             echo "</li>";
           echo "</ul>";
         echo "</nav>";
+      echo "<script>alert($ProjectID);</script>";
       ?>
+
     </header>
 
     <!-- GET USER'S PROFILE TYPE (HIDDEN) -->
 
     <?php
-      $Connection = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
-      $Connection->set_charset("utf8");
-      $Query = "SELECT Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario = '".$_SESSION['InputUser']."'";
-      $Result = $Connection->query($Query);
-      $UP;
-      while ($Row = $Result->fetch_assoc()) {
-        $UP = $Row["Perfil_Usuario"];
-        echo "<Profile hidden id='".$UP."'></Profile>";
-      }
+
+      $BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
+      $Query = $BBDD->prepare("SELECT P.* FROM Proyectos P WHERE P.ID_Proyecto = :InputProject;");
+      $Query -> bindValue(":InputProject",$ProjectID);
+      //$Query -> bindValue(":InputUser",$_SESSION['InputUser']);
+      //$_SESSION['InputUser']
+      var_dump($ProjectID);
+      echo '<div class="GlobalContainer">';
+      echo '<h5 class="GlobalContainerName">Proyectos</h5>';
+      $Query->execute();
+      $Con =$Query ->rowCount();
+      var_dump($Con);
+      /*if ($Result = $Connection->query($Query)) {
+
+        while ($Row = $Result->fetch_row()) {
+
+          echo "<a><div class='LocalContainer'>";
+          echo "<h1 class='ProjectTitle'>$Row[1]</h1>";
+          echo "<br>";
+          echo "<p class='ProjectDesc'><b>$Row[4]</b></p>";
+          echo "<br>";
+          echo "<p class='ProjectInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
+          echo "<p class='ProjectInfo'><b>Fecha de Finalización (Prevista):</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
+          echo "<p class='ProjectInfo'><b>Product Owner:</b> $Row[5]</p>";
+          echo "<p class='ProjectInfo'><b>Scrum Master:</b> $Row[6]</p>";
+
+          echo "</div><a>";
+          echo "rabo";
+        }
+      $Con->close();
+    }*/
+      $Connection->close();
+      echo "</div>";
     ?>
-    Projects View
+
+
   </body>
 </html>
