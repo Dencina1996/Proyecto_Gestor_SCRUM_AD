@@ -39,8 +39,7 @@
       echo '<div class="GlobalContainer">';
       echo '<h5 class="GlobalContainerName">Proyecto</h5>';
       $Query->execute();
-      $Res = $Query->rowCount();
-      //var_dump($Con);
+      $Res =$Query ->rowCount();
       if ($Res!=0) {
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
           echo "<a><div class='LocalContainer'>";
