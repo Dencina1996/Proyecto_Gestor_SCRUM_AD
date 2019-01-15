@@ -58,15 +58,29 @@
         WHERE P.ID_Proyecto = G.ID_Proyecto AND U.ID_Grupo = G.ID_Grupo AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';";
       }
       
-      $cons = "SELECT Nombre_Apellidos FROM Usuarios WHERE Perfil_Usuario = 'SM';";
-      $result = mysqli_query($Connection, $cons);
+      $consSM = "SELECT Nombre_Apellidos FROM Usuarios WHERE Perfil_Usuario = 'SM';";
+      $resultSM = mysqli_query($Connection, $consSM);
     
       echo "<script> var ScrumMasters = [];";
 
-      while($SM = mysqli_fetch_assoc($result)) {
+      while($SM = mysqli_fetch_assoc($resultSM)) {
 
         echo "var Sm = '" . $SM['Nombre_Apellidos'] . "';
             ScrumMasters.push(Sm);";
+        }
+       
+
+
+
+      $consPO = "SELECT Nombre_Apellidos FROM Usuarios WHERE Perfil_Usuario = 'PO';";
+      $resultPO = mysqli_query($Connection, $consPO);
+    
+      echo "var ProductOwners = [];";
+
+      while($PO = mysqli_fetch_assoc($resultPO)) {
+
+        echo "var Po = '" . $PO['Nombre_Apellidos'] . "';
+            ProductOwners.push(Po);";
         }
        
 

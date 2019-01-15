@@ -183,22 +183,27 @@ function createProjectButton() {
 				NewProjectFinalDate.setAttribute("onmouseout", "(this.type='text')");
 				NewProjectFinalDate.setAttribute("maxlength", "0");
 				NewProjectFinalDate.setAttribute("autocomplete", "off");
-			// PROJECT PRODUCT OWNER INPUT
+			// PROJECT SCRUM MASTER OPTIONS
 				for(i in ScrumMasters) {
 					var option = document.createElement("option");
 					option.text = ScrumMasters[i];
+					NewProjectSM.add(option);
+				}
+
+				NewProjectSM.setAttribute("class", "Input");
+				NewProjectSM.setAttribute("name", "PSM");
+
+
+			// PROJECT PRODUCT OWNER OPTIONS
+				for(i in ProductOwners) {
+					var option = document.createElement("option");
+					option.text = ProductOwners[i];
 					NewProjectPO.add(option);
 				}
 
 				NewProjectPO.setAttribute("class", "Input");
-				NewProjectPO.setAttribute("name", "PPO");
-				NewProjectPO.setAttribute("placeholder", "Product Owner");
+				NewProjectPO.setAttribute("name", "PSO");
 
-			// PROJECT SCRUM MASTER INPUT
-
-				NewProjectSM.setAttribute("class", "Input");
-				NewProjectSM.setAttribute("name", "PSM");
-				NewProjectSM.setAttribute("placeholder", "Scrum Master");
 
 			// PROJECT DESCRIPTION INPUT
 				NewProjectDescription.setAttribute("type", "textarea");
