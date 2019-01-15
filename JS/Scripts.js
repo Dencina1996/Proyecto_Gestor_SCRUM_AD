@@ -142,8 +142,8 @@ function createProjectButton() {
 			var NewProjectName = document.createElement("input");
 			var NewProjectInitDate = document.createElement("input");
 			var NewProjectFinalDate = document.createElement("input");
-			var NewProjectPO = document.createElement("input");
-			var NewProjectSM = document.createElement("input");
+			var NewProjectPO = document.createElement("select");
+			var NewProjectSM = document.createElement("select");
 			var NewProjectDescription = document.createElement("input");
 			var NewProjectAdd = document.createElement("button");
 			var NewProjectBack = document.createElement("button");
@@ -183,20 +183,28 @@ function createProjectButton() {
 				NewProjectFinalDate.setAttribute("onmouseout", "(this.type='text')");
 				NewProjectFinalDate.setAttribute("maxlength", "0");
 				NewProjectFinalDate.setAttribute("autocomplete", "off");
-			// PROJECT PRODUCT OWNER INPUT
-				NewProjectPO.setAttribute("type", "text");
-				NewProjectPO.setAttribute("class", "Input");
-				NewProjectPO.setAttribute("name", "PPO");
-				NewProjectPO.setAttribute("placeholder", "Product Owner");
-				NewProjectPO.setAttribute("maxlength", "100");
-				NewProjectPO.setAttribute("autocomplete", "off");
-			// PROJECT SCRUM MASTER INPUT
-				NewProjectSM.setAttribute("type", "text");
+			// PROJECT SCRUM MASTER OPTIONS
+				for(i in ScrumMasters) {
+					var option = document.createElement("option");
+					option.text = ScrumMasters[i];
+					NewProjectSM.add(option);
+				}
+
 				NewProjectSM.setAttribute("class", "Input");
 				NewProjectSM.setAttribute("name", "PSM");
-				NewProjectSM.setAttribute("placeholder", "Scrum Master");
-				NewProjectSM.setAttribute("maxlength", "100");
-				NewProjectSM.setAttribute("autocomplete", "off");
+
+
+			// PROJECT PRODUCT OWNER OPTIONS
+				for(i in ProductOwners) {
+					var option = document.createElement("option");
+					option.text = ProductOwners[i];
+					NewProjectPO.add(option);
+				}
+
+				NewProjectPO.setAttribute("class", "Input");
+				NewProjectPO.setAttribute("name", "PSO");
+
+
 			// PROJECT DESCRIPTION INPUT
 				NewProjectDescription.setAttribute("type", "textarea");
 				NewProjectDescription.setAttribute("class", "Input");
