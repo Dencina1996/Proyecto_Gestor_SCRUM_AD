@@ -57,12 +57,8 @@ function validarLogin() {
 }
 
 // FUNCTION FOR LOGIN FORM
- 
-/*function changeColor(element) {
-=======
 
-function changeColor(element) {
->>>>>>> 5a75ff4b8c77bfbe2e519d44c702cadd9d0b09a4
+/*function changeColor(element) {
 	var Icons = document.getElementById("ContainerDiv").querySelectorAll("i");
 	var i;
 	for (i = 0; i < Icons.length; i++) {
@@ -81,7 +77,7 @@ function getProjectInfo(id) {
 		//alert(ID);
 
 		var IDForm = document.createElement("form");
-		
+
 		IDForm.setAttribute("action", "ProjectView.php");
 		IDForm.setAttribute("id", "FormID");
 		IDForm.setAttribute("method", "POST");
@@ -93,13 +89,13 @@ function getProjectInfo(id) {
 			PID.setAttribute("hidden", true);
 			PID.setAttribute("name", "PDI");
 			PID.setAttribute('value', ID);
-			
-			document.getElementsByClassName("PDI").innerHTML == ID;	
+
+			document.getElementsByClassName("PDI").innerHTML == ID;
 
 		IDForm.appendChild(PID);
 		document.body.appendChild(IDForm);
-		
-		document.getElementById("FormID").submit();		
+
+		document.getElementById("FormID").submit();
 }
 
 // FUNCTION FOR PRIVILEGES
@@ -280,5 +276,12 @@ function CheckInputX() {
 		I2.previousElementSibling.style.backgroundColor = 'red';
 	} else {
 		I2.previousElementSibling.style.backgroundColor = 'green';
-	}	
+	}
+}
+
+function CheckSprintStatus(sprint) {
+	var Sprints = document.getElementsByName("Status");
+	if (Sprints == "Acabado") {
+		alert("nabo");
+	}
 }

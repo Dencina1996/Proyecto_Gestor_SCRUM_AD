@@ -3,9 +3,6 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
-<<<<<<< HEAD
--- Tiempo de generación: 14-12-2018 a las 16:54:0
-=======
 -- Tiempo de generación: 14-12-2018 a las 19:17:59
 -- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
@@ -241,4 +238,3 @@ ALTER TABLE `Sprints`
 --
 ALTER TABLE `Usuarios`
   ADD CONSTRAINT `Usuarios_ibfk_1` FOREIGN KEY (`ID_Grupo`) REFERENCES `Grupos` (`ID_Grupo`);
-
