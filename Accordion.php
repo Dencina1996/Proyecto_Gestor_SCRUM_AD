@@ -3,35 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>Bienvenid@ - Scrum AD</title>
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
-  <!--  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
-    </script>
+    <link rel="stylesheet" href="CSS/Project_View_CSS/Styles.css">
 
   </head>
   <body>
-    <!--falta posar els elemts dinamics -->
-    <h4>Simple Accordion</h4>
-          <ul class = "collapsible" data-collapsible = "accordion">
-             <li>
-                <div class = "collapsible-header">
-                   <i class = "material-icons">filter_drama</i>First Section</div>
-                <div class = "collapsible-body"><p>This is first section.</p></div>
-             </li>
 
-             <li>
-                <div class = "collapsible-header">
-                   <i class = "material-icons">place</i>Second Section</div>
-                <div class = "collapsible-body"><p>This is second section.</p></div>
-             </li>
+        <div class="accordion"><div>Section 1</div> <div class="removeSpring"><button type="button" name="button">-</button></div></div>
+          <div class="panel">
+              <p>Lorem ipsum...</p>
+          </div>
 
-             <li>
-                <div class = "collapsible-header">
-                   <i class = "material-icons">whatshot</i>Third Section</div>
-                <div class = "collapsible-body"><p>This is third section.</p></div>
-             </li>
-          </ul>
+        <div class="accordion"><div>Section 2</div> <div class="removeSpring"><button type="button" name="button">-</button></div></div>
+          <div class="panel">
+            <p>Lorem ipsum...</p>
+          </div>
+
+        <div class="accordion"><div>Section 3</div> <div class="removeSpring"><button type="button" name="button">-</button></div></div>
+          <div class="panel">
+            <p>Lorem ipsum...</p>
+          </div>
+<script src="JS/acordion.js"  type="text/javascript"></script>
   </body>
 </html>
