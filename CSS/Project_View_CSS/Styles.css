@@ -8,6 +8,13 @@
   padding: 1.5%;
 }
 
+.GlobalContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
 .GlobalContainerName {
   text-align: right;
   margin-right: 1%;
@@ -217,4 +224,50 @@ nav {
 
 #NewProjectBack:hover {
   background-color: blue;
+}
+
+.SprintTitle {
+  margin-left: 2%;
+}
+
+.SprintInfo {
+  margin-left: 5%;
+  margin-top: -1%;
+  margin-bottom: 1%;
+}
+
+.SprintContainer {
+  border: 1px solid black;
+  margin: 2% 2% 2% 2%;
+  width: 100%;
+  float: left;
+  background-color: yellow;
+}
+
+.SprintContainer:hover {
+  background-color: #139F00;
+  color: white;
+}
+
+.SpecsTitle {
+  margin-left: 2%;
+}
+
+.SpecsInfo {
+  margin-left: 5%;
+  margin-top: -1%;
+  margin-bottom: 1%;
+}
+
+.SpecsContainer {
+  border: 1px solid black;
+  margin: 2% 2% 2% 2%;
+  width: 100%;
+  float: right;
+  background-color: red;
+}
+
+.SpecsContainer:hover {
+  background-color: #139F00;
+  color: white;
 }

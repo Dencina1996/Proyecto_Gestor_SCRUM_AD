@@ -58,6 +58,9 @@
       echo "</div>";
     ?>
 
+    <div class="GlobalContainer">
+    <h5 class="GlobalContainerName">Sprints/Especificaciones</h5>
+
     <!-- GET SRINTS -->
 
     <?php
@@ -65,23 +68,47 @@
       $BBDD->exec('SET NAMES utf8');
       $Query = $BBDD->prepare("SELECT * FROM Sprints WHERE ID_Proyecto = :InputProject;");
       $Query->bindValue(":InputProject",$ProjectID);
-      echo '<div class="GlobalContainer">';
-      echo '<h5 class="GlobalContainerName">Sprints</h5>';
       $Query->execute();
       $Res =$Query ->rowCount();
       if ($Res!=0) {
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
-          echo "<a><div class='LocalContainer' onclick='CheckSprintStatus()'>";
-          echo "<h1 class='ProjectTitle'>$Row[1]</h1>";
+          echo "<a><div class='SprintContainer' style='width: 25%;' onclick='CheckSprintStatus(this)'>";
+          echo "<h1 class='SprintTitle'>$Row[1]</h1>";
           echo "<br>";
-          echo "<p class='ProjectInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
-          echo "<p class='ProjectInfo'><b>Fecha de Finalización:</b> ".date('d-m-Y', strtotime($Row[4]))."</p>";
-          echo "<p class='ProjectInfo'><b>Nº Horas asignadas:</b> $Row[5]</p>";
-          echo "<p name='Status' class='ProjectInfo'><b>Estado:</b> $Row[6]</p>";
+          echo "<p class='SprintInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
+          echo "<p class='SprintInfo'><b>Fecha de Finalización:</b> ".date('d-m-Y', strtotime($Row[4]))."</p>";
+          echo "<p class='SprintInfo'><b>Nº Horas asignadas:</b> $Row[5]</p>";
+          echo "<p name='Status' class='SprintInfo'><b>Estado:</b> $Row[6]</p>";
+          echo "<br>";
           echo "</div><a>";
         }
-    }
-      echo "</div>";
+        echo "</div>";
+      }
     ?>
+
+    <?php
+      $BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
+      $BBDD->exec('SET NAMES utf8');
+      $Query = $BBDD->prepare("SELECT * FROM Sprints WHERE ID_Proyecto = :InputProject;");
+      $Query->bindValue(":InputProject",$ProjectID);
+      $Query->execute();
+      $Res =$Query ->rowCount();
+      echo '<div class="GlobalContainer">';
+      if ($Res!=0) {
+        while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
+          echo "<a><div class='SpecsContainer' style='width: 25%; right: 300px' onclick='CheckSprintStatus(this)'>";
+          echo "<h1 class='SpecsTitle'>$Row[1]</h1>";
+          echo "<br>";
+          echo "<p class='SpecsInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
+          echo "<p class='SpecsInfo'><b>Fecha de Finalización:</b> ".date('d-m-Y', strtotime($Row[4]))."</p>";
+          echo "<p class='SpecsInfo'><b>Nº Horas asignadas:</b> $Row[5]</p>";
+          echo "<p name='Status' class='SpecsInfo'><b>Estado:</b> $Row[6]</p>";
+          echo "</div><a>";
+        }
+        echo "</div>";
+      }
+    ?>
+
+    </div>
   </body>
 </html>
