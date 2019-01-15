@@ -59,10 +59,6 @@ function validarLogin() {
 // FUNCTION FOR LOGIN FORM
 
 /*function changeColor(element) {
-=======
-
-function changeColor(element) {
->>>>>>> 5a75ff4b8c77bfbe2e519d44c702cadd9d0b09a4
 	var Icons = document.getElementById("ContainerDiv").querySelectorAll("i");
 	var i;
 	for (i = 0; i < Icons.length; i++) {
@@ -277,5 +273,12 @@ function CheckInputX() {
 		I2.previousElementSibling.style.backgroundColor = 'red';
 	} else {
 		I2.previousElementSibling.style.backgroundColor = 'green';
+	}
+}
+
+function CheckSprintStatus(sprint) {
+	var Sprints = document.getElementsByName("Status");
+	if (Sprints == "Acabado") {
+		alert("nabo");
 	}
 }
