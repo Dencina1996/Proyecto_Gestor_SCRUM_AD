@@ -272,7 +272,7 @@ nav {
   color: white;
 }
 
-/**/
+/* ACCORDION */
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
  background-color: #eee;
@@ -280,7 +280,7 @@ nav {
  cursor: poiter;
  padding: 0.7%;
  padding-bottom: 2%!important;
- width: 98%;
+ width: 100%;
  text-align: left;
  border: none;
  outline: none;

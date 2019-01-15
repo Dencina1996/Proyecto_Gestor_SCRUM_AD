@@ -11,6 +11,7 @@
         <div class="accordion"><div>Section 1</div> <div class="removeSpring"><button type="button" name="button">-</button></div></div>
           <div class="panel">
               <p>Lorem ipsum...</p>
+              <p>sdklfjñasdjlñfkjasñdlkfjlñak</p>
           </div>
 
         <div class="accordion"><div>Section 2</div> <div class="removeSpring"><button type="button" name="button">-</button></div></div>
