@@ -57,7 +57,7 @@ function validarLogin() {
 }
 
 // FUNCTION FOR LOGIN FORM
- 
+
 /*function changeColor(element) {
 =======
 
@@ -81,7 +81,7 @@ function getProjectInfo(id) {
 		//alert(ID);
 
 		var IDForm = document.createElement("form");
-		
+
 		IDForm.setAttribute("action", "ProjectView.php");
 		IDForm.setAttribute("id", "FormID");
 		IDForm.setAttribute("method", "POST");
@@ -93,13 +93,13 @@ function getProjectInfo(id) {
 			PID.setAttribute("hidden", true);
 			PID.setAttribute("name", "PDI");
 			PID.setAttribute('value', ID);
-			
-			document.getElementsByClassName("PDI").innerHTML == ID;	
+
+			document.getElementsByClassName("PDI").innerHTML == ID;
 
 		IDForm.appendChild(PID);
 		document.body.appendChild(IDForm);
-		
-		document.getElementById("FormID").submit();		
+
+		document.getElementById("FormID").submit();
 }
 
 // FUNCTION FOR PRIVILEGES
@@ -277,5 +277,5 @@ function CheckInputX() {
 		I2.previousElementSibling.style.backgroundColor = 'red';
 	} else {
 		I2.previousElementSibling.style.backgroundColor = 'green';
-	}	
+	}
 }
