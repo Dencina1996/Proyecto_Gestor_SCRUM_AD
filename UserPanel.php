@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="CSS/Logo.png">
     <script type="text/javascript" src="JS/Scripts.js"></script>
   </head>
-  <body onload="allowedOperations(), hidePreviousProjects()">
+  <body onload="allowedOperations()">
     <header>
       <?php
         session_start();
@@ -30,15 +30,7 @@
     <!-- GET USER'S PROFILE TYPE (HIDDEN) -->
 
     <?php
-      $Connection = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
-      $Connection->set_charset("utf8");
-      $Query = "SELECT Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario = '".$_SESSION['InputUser']."'";
-      $Result = $Connection->query($Query);
-      $UP;
-      while ($Row = $Result->fetch_assoc()) {
-        $UP = $Row["Perfil_Usuario"];
-        echo "<Profile hidden id='".$UP."'></Profile>";
-      }
+    echo "<Profile hidden id='".$_SESSION['TUser']."'></Profile>";
     ?>
 
     <!-- GET PROJECTS FROM DATABASE -->
@@ -51,25 +43,52 @@
         exit();
       }
 
-      if ($UP == "SM") {
+      if ($_SESSION['TUser'] == "SM") {
         $Query = "SELECT * FROM Proyectos";
-      } elseif ($UP != "SM") {
-        $Query = "SELECT P.* FROM Proyectos P, Grupos G, Usuarios U 
-        WHERE P.ID_Proyecto = G.ID_Proyecto AND U.ID_Grupo = G.ID_Grupo AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';"; 
+      } elseif ($_SESSION['TUser'] != "SM") {
+        $Query = "SELECT P.* FROM Proyectos P, Grupos G, Usuarios U
+        WHERE P.ID_Proyecto = G.ID_Proyecto AND U.ID_Grupo = G.ID_Grupo AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';";
       }
+
+      $consSM = "SELECT Nombre_Apellidos FROM Usuarios WHERE Perfil_Usuario = 'SM';";
+      $resultSM = mysqli_query($Connection, $consSM);
+
+      echo "<script> var ScrumMasters = [];";
+
+      while($SM = mysqli_fetch_assoc($resultSM)) {
+
+        echo "var Sm = '" . $SM['Nombre_Apellidos'] . "';
+            ScrumMasters.push(Sm);";
+        }
+
+
+
+
+      $consPO = "SELECT Nombre_Apellidos FROM Usuarios WHERE Perfil_Usuario = 'PO';";
+      $resultPO = mysqli_query($Connection, $consPO);
+
+      echo "var ProductOwners = [];";
+
+      while($PO = mysqli_fetch_assoc($resultPO)) {
+
+        echo "var Po = '" . $PO['Nombre_Apellidos'] . "';
+            ProductOwners.push(Po);";
+        }
+
+
+        echo "</script>";
+
+
+
       echo '<div class="GlobalContainer">';
       echo '<h5 class="GlobalContainerName">Proyectos</h5>';
       if ($Result = $Connection->query($Query)) {
         while ($Row = $Result->fetch_row()) {
-          echo "<a><div class='LocalContainer' onclick='showProjectInfo(this)'>";
+          echo "<a onclick='getProjectInfo($Row[0])'><div class='LocalContainer'>";
           echo "<h1 class='ProjectTitle'>$Row[1]</h1>";
           echo "<br>";
           echo "<p class='ProjectDesc'><b>$Row[4]</b></p>";
           echo "<br>";
-          echo "<p class='ProjectInfo' hidden>    <b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
-          echo "<p class='ProjectInfo' hidden>    <b>Fecha de Finalización (Prevista):</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
-          echo "<p class='ProjectInfo' hidden>    <b>Product Owner:</b> $Row[5]</p>";
-          echo "<p class='ProjectInfo' hidden>    <b>Scrum Master:</b> $Row[6]</p>";
           echo "</div><a>";
         }
       $Result->close();

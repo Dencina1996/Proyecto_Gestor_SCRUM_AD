@@ -26,7 +26,7 @@ function deleteError() {
 	}
 }
 
-// FUNCTION CHECK EMPTY FIELDS 
+// FUNCTION CHECK EMPTY FIELDS
 
 function validarLogin() {
 	var User = document.getElementsByName("InputUser")[0].value;
@@ -57,30 +57,52 @@ function validarLogin() {
 }
 
 // FUNCTION FOR LOGIN FORM
- 
-function changeColor(element) {
+
+/*function changeColor(element) {
 	var Icons = document.getElementById("ContainerDiv").querySelectorAll("i");
 	var i;
 	for (i = 0; i < Icons.length; i++) {
 		Icons[i].style.backgroundColor = 'white';
 	}
 	element.previousElementSibling.style.background = 'red';
-}
+}*/
 
 // FUNCTION FOR SHOWING PROJECT ATTRIBUTES
 
-function showProjectInfo(element) {
-	var Tags = element.getElementsByClassName("ProjectInfo");
-	for (var i = 0; i <= Tags.length; i++) {
-		Tags[i].hidden = false;
-	}
+function getProjectInfo(id) {
+	var ID = id;
+	//document.getElementById("ProjectInfo").innerHTML;
+
+	// CREATION OF FORM
+		//alert(ID);
+
+		var IDForm = document.createElement("form");
+
+		IDForm.setAttribute("action", "ProjectView.php");
+		IDForm.setAttribute("id", "FormID");
+		IDForm.setAttribute("method", "POST");
+
+		// P FOR PEACE
+
+			var PID = document.createElement("input");
+			PID.setAttribute("type", "text")
+			PID.setAttribute("hidden", true);
+			PID.setAttribute("name", "PDI");
+			PID.setAttribute('value', ID);
+
+			document.getElementsByClassName("PDI").innerHTML == ID;
+
+		IDForm.appendChild(PID);
+		document.body.appendChild(IDForm);
+
+		document.getElementById("FormID").submit();
 }
 
 // FUNCTION FOR PRIVILEGES
 
 function allowedOperations() {
 	var Profile = document.getElementsByTagName("Profile")[0].id;
-	
+
 	if (Profile == 'SM') {
 		createProjectButton();
 	}
@@ -120,8 +142,8 @@ function createProjectButton() {
 			var NewProjectName = document.createElement("input");
 			var NewProjectInitDate = document.createElement("input");
 			var NewProjectFinalDate = document.createElement("input");
-			var NewProjectPO = document.createElement("input");
-			var NewProjectSM = document.createElement("input");
+			var NewProjectPO = document.createElement("select");
+			var NewProjectSM = document.createElement("select");
 			var NewProjectDescription = document.createElement("input");
 			var NewProjectAdd = document.createElement("button");
 			var NewProjectBack = document.createElement("button");
@@ -161,20 +183,28 @@ function createProjectButton() {
 				NewProjectFinalDate.setAttribute("onmouseout", "(this.type='text')");
 				NewProjectFinalDate.setAttribute("maxlength", "0");
 				NewProjectFinalDate.setAttribute("autocomplete", "off");
-			// PROJECT PRODUCT OWNER INPUT
-				NewProjectPO.setAttribute("type", "text");
-				NewProjectPO.setAttribute("class", "Input");
-				NewProjectPO.setAttribute("name", "PPO");
-				NewProjectPO.setAttribute("placeholder", "Product Owner");
-				NewProjectPO.setAttribute("maxlength", "100");
-				NewProjectPO.setAttribute("autocomplete", "off");
-			// PROJECT SCRUM MASTER INPUT
-				NewProjectSM.setAttribute("type", "text");
+			// PROJECT SCRUM MASTER OPTIONS
+				for(i in ScrumMasters) {
+					var option = document.createElement("option");
+					option.text = ScrumMasters[i];
+					NewProjectSM.add(option);
+				}
+
 				NewProjectSM.setAttribute("class", "Input");
 				NewProjectSM.setAttribute("name", "PSM");
-				NewProjectSM.setAttribute("placeholder", "Scrum Master");	
-				NewProjectSM.setAttribute("maxlength", "100");
-				NewProjectSM.setAttribute("autocomplete", "off");
+
+
+			// PROJECT PRODUCT OWNER OPTIONS
+				for(i in ProductOwners) {
+					var option = document.createElement("option");
+					option.text = ProductOwners[i];
+					NewProjectPO.add(option);
+				}
+
+				NewProjectPO.setAttribute("class", "Input");
+				NewProjectPO.setAttribute("name", "PSO");
+
+
 			// PROJECT DESCRIPTION INPUT
 				NewProjectDescription.setAttribute("type", "textarea");
 				NewProjectDescription.setAttribute("class", "Input");
@@ -208,6 +238,44 @@ function createProjectButton() {
 			document.body.lastElementChild.appendChild(NewProjectDiv);
 	}
 
+
+function createSpec() {
+	var div = document.getElementById("specs");
+	var newDiv = document.createElement("div");
+	newDiv.setAttribute("id","nouSpec");
+	document.getElementById("specs").appendChild(newDiv);
+
+	var input = document.createElement("input");
+	input.setAttribute("id","inputSpec");
+	input.setAttribute("placeholder","Nom de l'especificació");
+	document.getElementById("nouSpec").appendChild(input);
+
+	var button = document.createElement("button");
+	button.setAttribute("onclick","afegirSpec()");
+	var textnode = document.createTextNode("Guardar");
+	button.appendChild(textnode);
+	document.getElementById("nouSpec").appendChild(button);
+}
+
+function afegirSpec() {
+	var NewSpec = document.getElementById("inputSpec").value;
+
+	var div = document.createElement("div");
+	div.setAttribute("id","divNewSpec");
+	div.setAttribute("class","SpecsContainer");
+	div.setAttribute("style","right: 300px");
+
+
+	var divSpecsTitle = document.createElement("div");
+	divSpecsTitle.setAttribute("class","SpecsTitle");
+	div.appendChild(divSpecsTitle);
+
+	var textnode = document.createTextNode(NewSpec);
+	divSpecsTitle.appendChild(textnode);
+	document.getElementById("specs").appendChild(div);
+}
+
+
 function validateNewProject() {
 	var Inputs = document.getElementsByClassName("Input");
 	var CounterEmpty = 0;
@@ -233,3 +301,31 @@ function backFromNewP() {
 	document.getElementsByClassName("NewProjectButton")[0].remove();
 	createProjectButton();
 }
+
+function CheckInput() {
+	setInterval(CheckInputX(),100);
+}
+
+function CheckInputX() {
+	var I1 = document.getElementsByClassName("input-field")[0];
+	var I2 = document.getElementsByClassName("input-field")[1];
+
+	if (I1.value == null || I1.value == "") {
+		I1.previousElementSibling.style.backgroundColor = 'red';
+	} else {
+		I1.previousElementSibling.style.backgroundColor = 'green';
+	}
+	if (I2.value == null || I2.value == "") {
+		I2.previousElementSibling.style.backgroundColor = 'red';
+	} else {
+		I2.previousElementSibling.style.backgroundColor = 'green';
+	}
+}
+
+function CheckSprintStatus(sprint) {
+	var Sprints = document.getElementsByName("Status");
+	if (Sprints == "Acabado") {
+		alert("AL GULAG!");
+	}
+}
+
