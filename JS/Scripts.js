@@ -256,18 +256,25 @@ function createSpec() {
 	button.appendChild(textnode);
 	document.getElementById("nouSpec").appendChild(button);
 }
-/*
+
 function afegirSpec() {
 	var NewSpec = document.getElementById("inputSpec").value;
+
 	var div = document.createElement("div");
-	div.setAttribute("class","GlobalContainer");
+	div.setAttribute("id","divNewSpec");
+	div.setAttribute("class","SpecsContainer");
 	div.setAttribute("style","right: 300px");
 
+
+	var divSpecsTitle = document.createElement("div");
+	divSpecsTitle.setAttribute("class","SpecsTitle");
+	div.appendChild(divSpecsTitle);
+
 	var textnode = document.createTextNode(NewSpec);
-	div.appendChild(textnode);
-	document.getElementById("nouSpec").appendChild(p);
+	divSpecsTitle.appendChild(textnode);
+	document.getElementById("specs").appendChild(div);
 }
-*/
+
 
 function validateNewProject() {
 	var Inputs = document.getElementsByClassName("Input");
