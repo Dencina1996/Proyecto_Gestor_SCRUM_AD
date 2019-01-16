@@ -63,8 +63,7 @@
       echo "</div>";
     ?>
 
-    <div class="GlobalContainer">
-    <h5 class="GlobalContainerName">Sprints/Especificaciones</h5>
+
 
     <!-- GET SPRINTS -->
 
@@ -75,6 +74,7 @@
       $Query->bindValue(":InputProject",$ProjectID);
       $Query->execute();
       $Res =$Query ->rowCount();
+      echo "<div class='GlobalContainer'><h5 class='GlobalContainerName'>Sprints/Especificaciones</h5>";
       echo '<div class="GlobalContainer" style="float: left; width: 40%;">';
       if ($Res!=0) {
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
@@ -85,7 +85,6 @@
           }elseif ($Row[5]=='Por empezar') {
             echo "<div class='accordion' style='background-color:black;'>";
           }
-
           echo "<div class='SpecsTitle'>Sprint $Row[0]</div><div class='removeSpring'><button hidden type='button' name='button'>-</button></div></div>";
           echo "<div class='panel'>";
           echo "</br>";
@@ -95,8 +94,10 @@
           echo "<p name='Status' class='SpecsInfo'><b>Estado:</b> $Row[5]</p>";
           echo "</div>";
         }
-        echo "</div>";
+      }else{
+        echo "<div class='SpecsTitle'> (Introduce un Sprint)</div>";
       }
+      echo "</div>";
     ?>
 
     <?php
@@ -108,6 +109,7 @@
       $Res =$Query ->rowCount();
       echo '<div class="GlobalContainer" id="specs" style="float: right; width: 40%;">';
       if ($Res!=0) {
+
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
           echo "<a><div class='SpecsContainer' style='right: 300px'>";
           echo "<div class='SpecsTitle'>$Row[1]</div>";
@@ -117,12 +119,13 @@
         if ($_SESSION['TUser'] == "PO") {
           echo "<button onclick = 'createSpec()'>Crear especificación</button>";
         }
-        
-        echo "</div>";
+      }else{
+        echo "<div class='SpecsTitle'> (Introduce una especificación)</div>";
       }
+      echo "</div>";
     ?>
 
-</div>
+    </div>
     </div>
     <script src="JS/acordion.js"  type="text/javascript"></script>
   </body>
