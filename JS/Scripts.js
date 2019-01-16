@@ -246,11 +246,28 @@ function createSpec() {
 	document.getElementById("specs").appendChild(newDiv);
 
 	var input = document.createElement("input");
+	input.setAttribute("id","inputSpec");
 	input.setAttribute("placeholder","Nom de l'especificació");
 	document.getElementById("nouSpec").appendChild(input);
 
-	
+	var button = document.createElement("button");
+	button.setAttribute("onclick","afegirSpec()");
+	var textnode = document.createTextNode("Guardar");
+	button.appendChild(textnode);
+	document.getElementById("nouSpec").appendChild(button);
 }
+/*
+function afegirSpec() {
+	var NewSpec = document.getElementById("inputSpec").value;
+	var div = document.createElement("div");
+	div.setAttribute("class","GlobalContainer");
+	div.setAttribute("style","right: 300px");
+
+	var textnode = document.createTextNode(NewSpec);
+	div.appendChild(textnode);
+	document.getElementById("nouSpec").appendChild(p);
+}
+*/
 
 function validateNewProject() {
 	var Inputs = document.getElementsByClassName("Input");
