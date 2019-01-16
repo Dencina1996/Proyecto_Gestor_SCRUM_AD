@@ -63,8 +63,7 @@
       echo "</div>";
     ?>
 
-    <div class="GlobalContainer">
-    <h5 class="GlobalContainerName">Sprints/Especificaciones</h5>
+
 
     <!-- GET SPRINTS -->
 
@@ -75,31 +74,30 @@
       $Query->bindValue(":InputProject",$ProjectID);
       $Query->execute();
       $Res =$Query ->rowCount();
+      echo "<div class='GlobalContainer'><h5 class='GlobalContainerName'>Sprints/Especificaciones</h5>";
       echo '<div class="GlobalContainer" style="float: left; width: 40%;">';
       if ($Res!=0) {
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
-          echo "<div class='accordion'><div class='SpecsTitle'>$Row[1]</div><div class='removeSpring'><button hidden type='button' name='button'>-</button></div></div>";
+          if($Row[5]=='Acabado'){
+            echo "<div class='accordion' style='background-color:grey;'>";
+          }elseif ($Row[5]=='En curso') {
+            echo "<div class='accordion' style='background-color:green;'>";
+          }elseif ($Row[5]=='Por empezar') {
+            echo "<div class='accordion' style='background-color:black;'>";
+          }
+          echo "<div class='SpecsTitle'>Sprint $Row[0]</div><div class='removeSpring'><button hidden type='button' name='button'>-</button></div></div>";
           echo "<div class='panel'>";
           echo "</br>";
-          echo "<p class='SpecsInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
-          echo "<p class='SpecsInfo'><b>Fecha de Finalización:</b> ".date('d-m-Y', strtotime($Row[4]))."</p>";
-          echo "<p class='SpecsInfo'><b>Nº Horas asignadas:</b> $Row[5]</p>";
-          echo "<p name='Status' class='SpecsInfo'><b>Estado:</b> $Row[6]</p>";
+          echo "<p class='SpecsInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
+          echo "<p class='SpecsInfo'><b>Fecha de Finalización:</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
+          echo "<p class='SpecsInfo'><b>Nº Horas asignadas:</b> $Row[4]</p>";
+          echo "<p name='Status' class='SpecsInfo'><b>Estado:</b> $Row[5]</p>";
           echo "</div>";
-
-          /*
-          echo "<div class='SpecsContainer' style='right: 300px' onclick='CheckSprintStatus(this)'>";
-          echo "<h1 class='SpecsTitle'>$Row[1]</h1>";
-          echo "<br>";
-          echo "<p class='SpecsInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
-          echo "<p class='SpecsInfo'><b>Fecha de Finalización:</b> ".date('d-m-Y', strtotime($Row[4]))."</p>";
-          echo "<p class='SpecsInfo'><b>Nº Horas asignadas:</b> $Row[5]</p>";
-          echo "<p name='Status' class='SpecsInfo'><b>Estado:</b> $Row[6]</p>";
-          echo "</div>";
-          */
         }
-        echo "</div>";
+      }else{
+        echo "<div class='SpecsTitle'> (Introduce un Sprint)</div>";
       }
+      echo "</div>";
     ?>
 
     <?php
@@ -111,20 +109,23 @@
       $Res =$Query ->rowCount();
       echo '<div class="GlobalContainer" id="specs" style="float: right; width: 40%;">';
       if ($Res!=0) {
+
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
           echo "<a><div class='SpecsContainer' style='right: 300px'>";
-          echo "<h1 class='SpecsTitle'>$Row[1]</h1>";
+          echo "<div class='SpecsTitle'>$Row[1]</div>";
           echo "<br>";
           echo "</div><a>";
         }
         if ($_SESSION['TUser'] == "PO") {
           echo "<button onclick = 'createSpec()'>Crear especificación</button>";
         }
-        
-        echo "</div>";
+      }else{
+        echo "<div class='SpecsTitle'> (Introduce una especificación)</div>";
       }
+      echo "</div>";
     ?>
 
+    </div>
     </div>
     <script src="JS/acordion.js"  type="text/javascript"></script>
   </body>

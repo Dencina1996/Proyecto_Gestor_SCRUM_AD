@@ -251,6 +251,8 @@ nav {
 
 .SpecsTitle {
   margin-left: 2%;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .SpecsInfo {
@@ -261,10 +263,10 @@ nav {
 
 .SpecsContainer {
   border: 1px solid black;
-  margin: 2% 2% 2% 2%;
+  margin: 2%;
   width: 100%;
   float: right;
-  background-color: red;
+  padding-top: 5%;
 }
 
 .SpecsContainer:hover {
@@ -275,8 +277,7 @@ nav {
 /* ACCORDION */
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
- background-color: #eee;
- color: #444;
+ color: white;
  cursor: poiter;
  padding: 0.7%;
  padding-bottom: 2%!important;
@@ -290,13 +291,10 @@ nav {
   display: inline;
 
 }
-.active{
-  color: while!important;
-  background-color: black!important;
-}
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
- background-color: #ccc;
+ background-color: grey;
+ color: white;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -306,6 +304,7 @@ nav {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+  
 }
 .removeSpring{
   float: right;
