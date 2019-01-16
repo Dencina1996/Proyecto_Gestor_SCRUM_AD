@@ -4,6 +4,7 @@ Fecha de Inicio: 26/11/2018
 	
 	- David Encina Martínez
 	- Nil Llibert Garcia Delshorts
+	- Pep Sort Cuscó
 
 · ARCHIVO SQL PARA GENERAR LA BBDD
 
@@ -14,15 +15,21 @@ Fecha de Inicio: 26/11/2018
 
 	Scrum Master:
 	
-		Usuario: Master
+		Usuario: lzabala
 		Contraseña: P@ssw0rd
 
 	Product Owner:
 		
-		Usuario: Master
+		Usuario: emieza
 		Contraseña: P@ssw0rd	
 			
-	Developer:
-
-		Usuario: Developer
-		Contraseña: P@ssw0rd	
+	Developers:
+		Developer 1:
+			Usuario: dencina
+			Contraseña: P@ssw0rd	
+		Developer 2:
+			Usuario: psort
+			Contraseña: P@ssw0rd	
+		Developer 3:
+			Usuario: nil
+			Contraseña: P@ssw0rd	
