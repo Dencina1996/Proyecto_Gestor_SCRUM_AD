@@ -251,6 +251,8 @@ nav {
 
 .SpecsTitle {
   margin-left: 2%;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .SpecsInfo {
@@ -302,6 +304,7 @@ nav {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+  
 }
 .removeSpring{
   float: right;

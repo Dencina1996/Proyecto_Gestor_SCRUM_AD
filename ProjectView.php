@@ -78,13 +78,21 @@
       echo '<div class="GlobalContainer" style="float: left; width: 40%;">';
       if ($Res!=0) {
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
-          echo "<div class='accordion'><div class='SpecsTitle'>$Row[1]</div><div class='removeSpring'><button hidden type='button' name='button'>-</button></div></div>";
+          if($Row[5]=='Acabado'){
+            echo "<div class='accordion' style='background-color:grey;'>";
+          }elseif ($Row[5]=='En curso') {
+            echo "<div class='accordion' style='background-color:green;'>";
+          }elseif ($Row[5]=='Por empezar') {
+            echo "<div class='accordion' style='background-color:black;'>";
+          }
+
+          echo "<div class='SpecsTitle'>Sprint $Row[0]</div><div class='removeSpring'><button hidden type='button' name='button'>-</button></div></div>";
           echo "<div class='panel'>";
           echo "</br>";
-          echo "<p class='SpecsInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
-          echo "<p class='SpecsInfo'><b>Fecha de Finalización:</b> ".date('d-m-Y', strtotime($Row[4]))."</p>";
-          echo "<p class='SpecsInfo'><b>Nº Horas asignadas:</b> $Row[5]</p>";
-          echo "<p name='Status' class='SpecsInfo'><b>Estado:</b> $Row[6]</p>";
+          echo "<p class='SpecsInfo'><b>Fecha de Inicio:</b> ".date('d-m-Y', strtotime($Row[2]))."</p>";
+          echo "<p class='SpecsInfo'><b>Fecha de Finalización:</b> ".date('d-m-Y', strtotime($Row[3]))."</p>";
+          echo "<p class='SpecsInfo'><b>Nº Horas asignadas:</b> $Row[4]</p>";
+          echo "<p name='Status' class='SpecsInfo'><b>Estado:</b> $Row[5]</p>";
           echo "</div>";
         }
         echo "</div>";
@@ -110,6 +118,7 @@
       }
     ?>
 
+</div>
     </div>
     <script src="JS/acordion.js"  type="text/javascript"></script>
   </body>
