@@ -62,7 +62,7 @@
     <div class="GlobalContainer">
     <h5 class="GlobalContainerName">Sprints/Especificaciones</h5>
 
-    <!-- GET SRINTS -->
+    <!-- GET SPRINTS -->
 
     <?php
       $BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
@@ -113,6 +113,7 @@
           echo "<br>";
           echo "</div><a>";
         }
+        
         echo "</div>";
       }
     ?>
