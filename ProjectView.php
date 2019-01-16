@@ -66,7 +66,7 @@
     <div class="GlobalContainer">
     <h5 class="GlobalContainerName">Sprints/Especificaciones</h5>
 
-    <!-- GET SRINTS -->
+    <!-- GET SPRINTS -->
 
     <?php
       $BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
@@ -106,7 +106,7 @@
       $Query->bindValue(":InputProject",$ProjectID);
       $Query->execute();
       $Res =$Query ->rowCount();
-      echo '<div class="GlobalContainer" style="float: right; width: 40%;">';
+      echo '<div class="GlobalContainer" id="specs" style="float: right; width: 40%;">';
       if ($Res!=0) {
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
           echo "<a><div class='SpecsContainer' style='right: 300px'>";
@@ -114,6 +114,10 @@
           echo "<br>";
           echo "</div><a>";
         }
+        if ($_SESSION['TUser'] == "PO") {
+          echo "<button onclick = 'createSpec()'>Crear especificación</button>";
+        }
+        
         echo "</div>";
       }
     ?>
