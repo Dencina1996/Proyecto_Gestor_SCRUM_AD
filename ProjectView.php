@@ -29,6 +29,10 @@
       ?>
 
     </header>
+    <!-- GET PROFILE TYPE -->
+    <?php
+      echo "<Profile hidden id='".$_SESSION['TUser']."'></Profile>";
+     ?>
 
     <!-- GET PROJECT INFO -->
 

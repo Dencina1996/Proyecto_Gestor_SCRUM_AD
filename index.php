@@ -20,13 +20,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	if($Result == 1){
 		$BBDD = new PDO('mysql:host=127.0.0.1;dbname=BD_Scrum','scrum','P@ssw0rd');
 
-		$Query = $BBDD->prepare('SELECT Nombre_Usuario, Password_Usuario FROM Usuarios WHERE Nombre_Usuario=:InputUser AND Password_Usuario=SHA2(:InputPassword,512);');
+		$Query = $BBDD->prepare('SELECT Nombre_Usuario, Password_Usuario, Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario=:InputUser AND Password_Usuario=SHA2(:InputPassword,512);');
 		$Query -> bindValue(':InputUser',$Usuario);
 		$Query -> bindValue(':InputPassword',$Contrasenya);
 		$Query -> execute();
 		$Result = $Query->rowCount();
-
+		$TypUser;
 		if($Result == 1){
+			  while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
+					$TypUser = $Row[2];
+				}
+				$_SESSION['TUser'] = $TypUser;
 				$_SESSION['InputUser'] = $Usuario;
 			header("Location: UserPanel.php");
 		} else {

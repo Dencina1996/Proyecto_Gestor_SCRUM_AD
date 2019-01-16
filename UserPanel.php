@@ -30,15 +30,7 @@
     <!-- GET USER'S PROFILE TYPE (HIDDEN) -->
 
     <?php
-      $Connection = new mysqli("localhost", "scrum", "P@ssw0rd", "BD_Scrum");
-      $Connection->set_charset("utf8");
-      $Query = "SELECT Perfil_Usuario FROM Usuarios WHERE Nombre_Usuario = '".$_SESSION['InputUser']."'";
-      $Result = $Connection->query($Query);
-      $UP;
-      while ($Row = $Result->fetch_assoc()) {
-        $UP = $Row["Perfil_Usuario"];
-        echo "<Profile hidden id='".$UP."'></Profile>";
-      }
+    echo "<Profile hidden id='".$_SESSION['TUser']."'></Profile>";
     ?>
 
     <!-- GET PROJECTS FROM DATABASE -->
@@ -51,16 +43,16 @@
         exit();
       }
 
-      if ($UP == "SM") {
+      if ($_SESSION['TUser'] == "SM") {
         $Query = "SELECT * FROM Proyectos";
-      } elseif ($UP != "SM") {
+      } elseif ($_SESSION['TUser'] != "SM") {
         $Query = "SELECT P.* FROM Proyectos P, Grupos G, Usuarios U
         WHERE P.ID_Proyecto = G.ID_Proyecto AND U.ID_Grupo = G.ID_Grupo AND U.Nombre_Usuario = '".$_SESSION['InputUser']."';";
       }
-      
+
       $consSM = "SELECT Nombre_Apellidos FROM Usuarios WHERE Perfil_Usuario = 'SM';";
       $resultSM = mysqli_query($Connection, $consSM);
-    
+
       echo "<script> var ScrumMasters = [];";
 
       while($SM = mysqli_fetch_assoc($resultSM)) {
@@ -68,13 +60,13 @@
         echo "var Sm = '" . $SM['Nombre_Apellidos'] . "';
             ScrumMasters.push(Sm);";
         }
-       
+
 
 
 
       $consPO = "SELECT Nombre_Apellidos FROM Usuarios WHERE Perfil_Usuario = 'PO';";
       $resultPO = mysqli_query($Connection, $consPO);
-    
+
       echo "var ProductOwners = [];";
 
       while($PO = mysqli_fetch_assoc($resultPO)) {
@@ -82,7 +74,7 @@
         echo "var Po = '" . $PO['Nombre_Apellidos'] . "';
             ProductOwners.push(Po);";
         }
-       
+
 
         echo "</script>";
 
