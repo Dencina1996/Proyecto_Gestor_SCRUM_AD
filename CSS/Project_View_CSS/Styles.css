@@ -8,6 +8,13 @@
   padding: 1.5%;
 }
 
+.GlobalContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
 .GlobalContainerName {
   text-align: right;
   margin-right: 1%;
@@ -218,3 +225,89 @@ nav {
 #NewProjectBack:hover {
   background-color: blue;
 }
+
+.SprintTitle {
+  margin-left: 2%;
+}
+
+.SprintInfo {
+  margin-left: 5%;
+  margin-top: -1%;
+  margin-bottom: 1%;
+}
+
+.SprintContainer {
+  border: 1px solid black;
+  margin: 2% 2% 2% 2%;
+  width: 100%;
+  float: left;
+  background-color: yellow;
+}
+
+.SprintContainer:hover {
+  background-color: #139F00;
+  color: white;
+}
+
+.SpecsTitle {
+  margin-left: 2%;
+}
+
+.SpecsInfo {
+  margin-left: 5%;
+  margin-top: -1%;
+  margin-bottom: 1%;
+}
+
+.SpecsContainer {
+  border: 1px solid black;
+  margin: 2% 2% 2% 2%;
+  width: 100%;
+  float: right;
+  background-color: red;
+}
+
+.SpecsContainer:hover {
+  background-color: #139F00;
+  color: white;
+}
+
+/* ACCORDION */
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+ background-color: #eee;
+ color: #444;
+ cursor: poiter;
+ padding: 0.7%;
+ padding-bottom: 2%!important;
+ width: 100%;
+ text-align: left;
+ border: none;
+ outline: none;
+ transition: 0.4s;
+}
+.accordion > div{
+  display: inline;
+
+}
+.active{
+  color: while!important;
+  background-color: black!important;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+ background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.removeSpring{
+  float: right;
+}
+/**/

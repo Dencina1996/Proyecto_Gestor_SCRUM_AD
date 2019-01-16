@@ -290,3 +290,4 @@ function CheckSprintStatus(sprint) {
 		alert("AL GULAG!");
 	}
 }
+
