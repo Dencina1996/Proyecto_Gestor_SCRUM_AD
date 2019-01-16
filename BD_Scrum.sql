@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
-<<<<<<< HEAD
--- Tiempo de generación: 14-12-2018 a las 16:54:07
-=======
--- Tiempo de generación: 14-12-2018 a las 19:17:59
->>>>>>> c195822c3f023a50d02e4b90cb9c06fc2ab8d31b
+-- Tiempo de generación: 16-01-2019 a las 18:10:00
 -- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
@@ -23,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `BD_Scrum`
 --
-CREATE DATABASE IF NOT EXISTS `BD_Scrum` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `BD_Scrum`;
 
 -- --------------------------------------------------------
 
@@ -34,22 +28,24 @@ USE `BD_Scrum`;
 
 CREATE TABLE `Especificaciones` (
   `ID_Especificacion` int(11) NOT NULL,
-  `Nombre_Especificacion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `Especificacion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `ID_Sprint` int(11) DEFAULT NULL,
+  `ID_Usuario` int(11) DEFAULT NULL,
   `ID_Proyecto` int(11) NOT NULL,
-  `ID_Usuario` int(11) NOT NULL,
-  `ID_Sprint` int(11) NOT NULL,
   `Descripcion_Especificacion` varchar(256) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Duracion_Especificacion` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Dificultad_Especificacion` varchar(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Estado_Especificacion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Duracion_Especificacion` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `Dificultad_Especificacion` varchar(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `Estado_Especificacion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Especificaciones`
 --
 
-INSERT INTO `Especificaciones` (`ID_Especificacion`, `Nombre_Especificacion`, `ID_Proyecto`, `ID_Usuario`, `ID_Sprint`, `Descripcion_Especificacion`, `Duracion_Especificacion`, `Dificultad_Especificacion`, `Estado_Especificacion`) VALUES
-(1, 'Especificacion 1 test', 1, 1, 1, 'Test de la Especificacion 1', '1h', 'M', 'In Progress');
+INSERT INTO `Especificaciones` (`ID_Especificacion`, `Especificacion`, `ID_Sprint`, `ID_Usuario`, `ID_Proyecto`, `Descripcion_Especificacion`, `Duracion_Especificacion`, `Dificultad_Especificacion`, `Estado_Especificacion`) VALUES
+(1, 'Botón Crear Proyecto', 1, 2, 1, 'Botón con imagen PNG para crear Proyecto', '4', '3', 'Pendiente'),
+(2, 'Esqueleto Página', 1, 1, 1, 'Prueba', '4', '3', 'Pendiente'),
+(3, 'Screen Administración Proyecto', 1, 3, 1, 'Un marc per tota la informació general (la introduida quan es crea el projecte)', '4', '3', 'Pendiente');
 
 -- --------------------------------------------------------
 
@@ -59,16 +55,15 @@ INSERT INTO `Especificaciones` (`ID_Especificacion`, `Nombre_Especificacion`, `I
 
 CREATE TABLE `Grupos` (
   `ID_Grupo` int(11) NOT NULL,
-  `Nombre_Grupo` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `ID_Proyecto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `ID_Proyecto` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Grupos`
 --
 
-INSERT INTO `Grupos` (`ID_Grupo`, `Nombre_Grupo`, `ID_Proyecto`) VALUES
-(1, 'Grupo test 1', 1);
+INSERT INTO `Grupos` (`ID_Grupo`, `ID_Proyecto`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -82,9 +77,9 @@ CREATE TABLE `Proyectos` (
   `Fecha_Inicio_Proyecto` date NOT NULL,
   `Fecha_Final_Proyecto` date NOT NULL,
   `Descripcion_Proyecto` varchar(256) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `PO_Proyecto` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `SM_Proyecto` varchar(100) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `PO_Proyecto` varchar(100) NOT NULL,
+  `SM_Proyecto` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Proyectos`
@@ -104,20 +99,21 @@ INSERT INTO `Proyectos` (`ID_Proyecto`, `Nombre_Proyecto`, `Fecha_Inicio_Proyect
 
 CREATE TABLE `Sprints` (
   `ID_Sprint` int(11) NOT NULL,
-  `Nombre_Sprint` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `ID_Proyecto` int(11) NOT NULL,
   `Fecha_Inicio_Sprint` date NOT NULL,
   `Fecha_Final_Sprint` date NOT NULL,
   `Duracion_Sprint` int(11) NOT NULL,
   `Estado_Sprint` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Sprints`
 --
 
-INSERT INTO `Sprints` (`ID_Sprint`, `Nombre_Sprint`, `ID_Proyecto`, `Fecha_Inicio_Sprint`, `Fecha_Final_Sprint`, `Duracion_Sprint`, `Estado_Sprint`) VALUES
-(1, 'Sprint 1 test', 1, '2018-11-29', '2018-11-30', 20, 'Activo');
+INSERT INTO `Sprints` (`ID_Sprint`, `ID_Proyecto`, `Fecha_Inicio_Sprint`, `Fecha_Final_Sprint`, `Duracion_Sprint`, `Estado_Sprint`) VALUES
+(1, 1, '2018-12-11', '2019-01-11', 90, 'Acabado'),
+(2, 1, '2019-01-14', '2019-02-14', 90, 'En curso'),
+(3, 1, '2019-02-16', '2019-03-16', 90, 'Por empezar');
 
 -- --------------------------------------------------------
 
@@ -128,21 +124,23 @@ INSERT INTO `Sprints` (`ID_Sprint`, `Nombre_Sprint`, `ID_Proyecto`, `Fecha_Inici
 CREATE TABLE `Usuarios` (
   `ID_Usuario` int(11) NOT NULL,
   `Nombre_Usuario` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Nombre_Apellidos` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `Nombre_Apellidos` varchar(100) DEFAULT NULL,
   `Password_Usuario` varchar(512) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Perfil_Usuario` varchar(3) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `ID_Grupo` int(11) NOT NULL,
-  `Correo_Usuario` varchar(100) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `ID_Grupo` int(11) DEFAULT NULL,
+  `Correo_Usuario` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Usuarios`
 --
 
 INSERT INTO `Usuarios` (`ID_Usuario`, `Nombre_Usuario`, `Nombre_Apellidos`, `Password_Usuario`, `Perfil_Usuario`, `ID_Grupo`, `Correo_Usuario`) VALUES
-(1, 'Master', 'Leandro Zabala', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'SM', 1, 'Master@scrum.com'),
-(2, 'Owner', 'Enric Mieza', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'PO', 1, 'ProductOwner@scrum.com'),
-(3, 'Developer', 'David Encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1, 'Developer@scrum.com');
+(1, 'lzabala', 'Leandro Zabala', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'SM', 1, 'Master@scrum.com'),
+(2, 'emieza', 'Enric Mieza', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'PO', 1, 'ProductOwner@scrum.com'),
+(3, 'dencina', 'David Encina', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1, 'dencinamartinez@iesesteveterradas.cat'),
+(4, 'psort', 'Pep Sort', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1, 'pepsort7@gmail.com'),
+(5, 'nil', 'Nil Llibert Delshorts', '6bfcc4026b5f162799a6dc8305c09db9c1674ac616bd5c7422a45fbb6d0816ac163047c47a1f426f4f4c6b5b5042c671eabc4fdc7310fd5b183eef59dc274604', 'D', 1, 'ngarciadelshorts@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -192,7 +190,7 @@ ALTER TABLE `Usuarios`
 -- AUTO_INCREMENT de la tabla `Especificaciones`
 --
 ALTER TABLE `Especificaciones`
-  MODIFY `ID_Especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `Grupos`
 --
@@ -202,17 +200,17 @@ ALTER TABLE `Grupos`
 -- AUTO_INCREMENT de la tabla `Proyectos`
 --
 ALTER TABLE `Proyectos`
-  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_Proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `Sprints`
 --
 ALTER TABLE `Sprints`
-  MODIFY `ID_Sprint` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Sprint` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Restricciones para tablas volcadas
 --
@@ -243,3 +241,6 @@ ALTER TABLE `Sprints`
 ALTER TABLE `Usuarios`
   ADD CONSTRAINT `Usuarios_ibfk_1` FOREIGN KEY (`ID_Grupo`) REFERENCES `Grupos` (`ID_Grupo`);
 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
