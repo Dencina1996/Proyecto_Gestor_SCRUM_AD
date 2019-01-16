@@ -287,6 +287,6 @@ function CheckInputX() {
 function CheckSprintStatus(sprint) {
 	var Sprints = document.getElementsByName("Status");
 	if (Sprints == "Acabado") {
-		alert("nabo");
+		alert("AL GULAG!");
 	}
 }
