@@ -238,6 +238,20 @@ function createProjectButton() {
 			document.body.lastElementChild.appendChild(NewProjectDiv);
 	}
 
+
+function createSpec() {
+	var div = document.getElementById("specs");
+	var newDiv = document.createElement("div");
+	newDiv.setAttribute("id","nouSpec");
+	document.getElementById("specs").appendChild(newDiv);
+
+	var input = document.createElement("input");
+	input.setAttribute("placeholder","Nom de l'especificació");
+	document.getElementById("nouSpec").appendChild(input);
+
+	
+}
+
 function validateNewProject() {
 	var Inputs = document.getElementsByClassName("Input");
 	var CounterEmpty = 0;

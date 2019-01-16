@@ -109,13 +109,16 @@
       $Query->bindValue(":InputProject",$ProjectID);
       $Query->execute();
       $Res =$Query ->rowCount();
-      echo '<div class="GlobalContainer" style="float: right; width: 40%;">';
+      echo '<div class="GlobalContainer" id="specs" style="float: right; width: 40%;">';
       if ($Res!=0) {
         while ($Row = $Query->fetch(PDO::FETCH_NUM)) {
           echo "<a><div class='SpecsContainer' style='right: 300px'>";
           echo "<h1 class='SpecsTitle'>$Row[1]</h1>";
           echo "<br>";
           echo "</div><a>";
+        }
+        if ($_SESSION['TUser'] == "PO") {
+          echo "<button onclick = 'createSpec()'>Crear especificación</button>";
         }
         
         echo "</div>";
