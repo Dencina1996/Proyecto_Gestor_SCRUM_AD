@@ -3,7 +3,7 @@ Fecha de Inicio: 26/11/2018
 · LISTADO DE PARTICIPANTES
 	
 	- David Encina Martínez
-	- Nil Llibert Garcia Delshorts
+	- Nil Llibert Garcia i Delshorts
 	- Pep Sort Cuscó
 
 · ARCHIVO SQL PARA GENERAR LA BBDD
