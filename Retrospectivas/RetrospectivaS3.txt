@@ -1,0 +1,13 @@
+David Encina / Nil ll. Garcia / Pep Sort
+
+-¿Que ha ido mal?
+-Nil: Previsión, el hecho de no tener horas para solucionar problemas del Sprint 2 ha estado el mayor problema, este hecho me ha retrasado a la hora de empezar a hacer las especificaciones del Sprint 3.
+-David: Debido al parón entre diciembre y enero, el rendimiento se ha visto afectado en todo el grupo. Personalmente, podría haber ido mejor si se hubiera podido alargar un par de horas el Sprint 3. Las vacaciones pasan factura.
+-Pep: Personalmente el cambio de grupo. Aproximadamente un tercio de las horas del Sprint me las he pasado entendieniendo el codigo, ante de empezar a hacer nada.I después, tampoco encontrava facilmente las funciones ni los processos. Quizas excessiva modulación.
+-Grupo:El paron de vacaciones sumado a la falta de prevision han provocado que no se hayan acabado todas las especificaciones ya que primero havia que corregir los problemas del Sprint anterior.
+
+-¿Que se puede mejorar?
+-Nil: Hacer mejor la previsión de horas en el Sprint planing, para ajustar mejor la prevision de cara a posibles incidencias como: cambio de compañeros, solucionar problemas de Sprints anteriores, etc.
+-David: Reducir el volumen de cambios de desarrolladores entre proyectos afectaría positivamente al desarrollo del mismo.
+-Pep:Racionalizar la estructura. El codigo estava bien comentado y los compañeros me han ayudado bien a entenderlo quando los preguntava cosas, pero como he dicho antes, hay modulos innecessarios o que tienen poco sentido. En cambio, claramente han faltado funciones para hacer algunos processos muy repetitivos.
+-Grupo: Evitar el cambio de desarrolladores entre proyectos en el ultimo Sprint, mejorar la previsión, centrarse después de vacaciones.
